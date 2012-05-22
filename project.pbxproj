@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A59CB6041566850400AE42DC /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Entry.m */; };
+		A59CB6051566850400AE42DC /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Entry.m */; };
+		A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB607156AD31700AE42DC /* EditDateTimeController.m */; };
+		A59CB609156AD31700AE42DC /* EditDateTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB607156AD31700AE42DC /* EditDateTimeController.m */; };
+		A5AD55C11560527E00EAE7B4 /* Cronkite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */; };
+		A5AD55C41560545100EAE7B4 /* AuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD55C31560545100EAE7B4 /* AuthController.m */; };
+		A5AD55C51560545100EAE7B4 /* AuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AD55C31560545100EAE7B4 /* AuthController.m */; };
+		A5C874B7155A30E60067A4FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874B6155A30E60067A4FC /* UIKit.framework */; };
+		A5C874B9155A30E60067A4FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874B8155A30E60067A4FC /* Foundation.framework */; };
+		A5C874BB155A30E60067A4FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874BA155A30E60067A4FC /* CoreGraphics.framework */; };
+		A5C874BD155A30E60067A4FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874BC155A30E60067A4FC /* CoreData.framework */; };
+		A5C874C3155A30E60067A4FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C874C1155A30E60067A4FC /* InfoPlist.strings */; };
+		A5C874C5155A30E60067A4FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C874C4155A30E60067A4FC /* main.m */; };
+		A5C874C9155A30E60067A4FC /* cronkiteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C874C8155A30E60067A4FC /* cronkiteAppDelegate.m */; };
+		A5C874CC155A30E60067A4FC /* cronkite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5C874CA155A30E60067A4FC /* cronkite.xcdatamodeld */; };
+		A5C874D4155A30E60067A4FC /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874D3155A30E60067A4FC /* SenTestingKit.framework */; };
+		A5C874D5155A30E60067A4FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874B6155A30E60067A4FC /* UIKit.framework */; };
+		A5C874D6155A30E60067A4FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874B8155A30E60067A4FC /* Foundation.framework */; };
+		A5C874D7155A30E60067A4FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C874BC155A30E60067A4FC /* CoreData.framework */; };
+		A5C874DF155A30E70067A4FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C874DD155A30E70067A4FC /* InfoPlist.strings */; };
+		A5C874E2155A30E70067A4FC /* cronkiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C874E1155A30E70067A4FC /* cronkiteTests.m */; };
+		A5DFEB1B1560CE2800A3E7F7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB071560CE2800A3E7F7 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB1C1560CE2800A3E7F7 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB071560CE2800A3E7F7 /* AFHTTPClient.m */; };
+		A5DFEB1D1560CE2800A3E7F7 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB091560CE2800A3E7F7 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB1E1560CE2800A3E7F7 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB091560CE2800A3E7F7 /* AFHTTPRequestOperation.m */; };
+		A5DFEB1F1560CE2800A3E7F7 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB0B1560CE2800A3E7F7 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB201560CE2800A3E7F7 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB0B1560CE2800A3E7F7 /* AFImageRequestOperation.m */; };
+		A5DFEB211560CE2800A3E7F7 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB0D1560CE2800A3E7F7 /* AFJSONRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB221560CE2800A3E7F7 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB0D1560CE2800A3E7F7 /* AFJSONRequestOperation.m */; };
+		A5DFEB231560CE2800A3E7F7 /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB0F1560CE2800A3E7F7 /* AFJSONUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB241560CE2800A3E7F7 /* AFJSONUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB0F1560CE2800A3E7F7 /* AFJSONUtilities.m */; };
+		A5DFEB251560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB111560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB261560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB111560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m */; };
+		A5DFEB271560CE2800A3E7F7 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB141560CE2800A3E7F7 /* AFPropertyListRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB281560CE2800A3E7F7 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB141560CE2800A3E7F7 /* AFPropertyListRequestOperation.m */; };
+		A5DFEB291560CE2800A3E7F7 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB161560CE2800A3E7F7 /* AFURLConnectionOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB2A1560CE2800A3E7F7 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB161560CE2800A3E7F7 /* AFURLConnectionOperation.m */; };
+		A5DFEB2B1560CE2800A3E7F7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB181560CE2800A3E7F7 /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB2C1560CE2800A3E7F7 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB181560CE2800A3E7F7 /* AFXMLRequestOperation.m */; };
+		A5DFEB2D1560CE2800A3E7F7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB1A1560CE2800A3E7F7 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5DFEB2E1560CE2800A3E7F7 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB1A1560CE2800A3E7F7 /* UIImageView+AFNetworking.m */; };
+		A5DFEB311561D98600A3E7F7 /* EntriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB301561D98600A3E7F7 /* EntriesController.m */; };
+		A5DFEB321561D98600A3E7F7 /* EntriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB301561D98600A3E7F7 /* EntriesController.m */; };
+		A5DFEB39156368D700A3E7F7 /* EditEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB38156368D700A3E7F7 /* EditEntryController.m */; };
+		A5DFEB3A156368D700A3E7F7 /* EditEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DFEB38156368D700A3E7F7 /* EditEntryController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5C874D8155A30E60067A4FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5C874A9155A30E60067A4FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5C874B1155A30E60067A4FC;
+			remoteInfo = cronkite;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A59CB6021566850400AE42DC /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		A59CB6031566850400AE42DC /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		A59CB606156AD31600AE42DC /* EditDateTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDateTimeController.h; sourceTree = "<group>"; };
+		A59CB607156AD31700AE42DC /* EditDateTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDateTimeController.m; sourceTree = "<group>"; };
+		A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cronkite.storyboard; sourceTree = "<group>"; };
+		A5AD55C21560545100EAE7B4 /* AuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthController.h; sourceTree = "<group>"; };
+		A5AD55C31560545100EAE7B4 /* AuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthController.m; sourceTree = "<group>"; };
+		A5C874B2155A30E60067A4FC /* cronkite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cronkite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C874B6155A30E60067A4FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A5C874B8155A30E60067A4FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5C874BA155A30E60067A4FC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A5C874BC155A30E60067A4FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A5C874C0155A30E60067A4FC /* cronkite-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cronkite-Info.plist"; sourceTree = "<group>"; };
+		A5C874C2155A30E60067A4FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5C874C4155A30E60067A4FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5C874C6155A30E60067A4FC /* cronkite-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cronkite-Prefix.pch"; sourceTree = "<group>"; };
+		A5C874C7155A30E60067A4FC /* cronkiteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cronkiteAppDelegate.h; sourceTree = "<group>"; };
+		A5C874C8155A30E60067A4FC /* cronkiteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cronkiteAppDelegate.m; sourceTree = "<group>"; };
+		A5C874CB155A30E60067A4FC /* cronkite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cronkite.xcdatamodel; sourceTree = "<group>"; };
+		A5C874D2155A30E60067A4FC /* cronkiteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cronkiteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C874D3155A30E60067A4FC /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A5C874DC155A30E70067A4FC /* cronkiteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "cronkiteTests-Info.plist"; sourceTree = "<group>"; };
+		A5C874DE155A30E70067A4FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5C874E0155A30E70067A4FC /* cronkiteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cronkiteTests.h; sourceTree = "<group>"; };
+		A5C874E1155A30E70067A4FC /* cronkiteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = cronkiteTests.m; sourceTree = "<group>"; };
+		A5DFEB061560CE2800A3E7F7 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		A5DFEB071560CE2800A3E7F7 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		A5DFEB081560CE2800A3E7F7 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		A5DFEB091560CE2800A3E7F7 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		A5DFEB0A1560CE2800A3E7F7 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		A5DFEB0B1560CE2800A3E7F7 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		A5DFEB0C1560CE2800A3E7F7 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		A5DFEB0D1560CE2800A3E7F7 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		A5DFEB0E1560CE2800A3E7F7 /* AFJSONUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONUtilities.h; sourceTree = "<group>"; };
+		A5DFEB0F1560CE2800A3E7F7 /* AFJSONUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONUtilities.m; sourceTree = "<group>"; };
+		A5DFEB101560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		A5DFEB111560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		A5DFEB121560CE2800A3E7F7 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		A5DFEB131560CE2800A3E7F7 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		A5DFEB141560CE2800A3E7F7 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		A5DFEB151560CE2800A3E7F7 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		A5DFEB161560CE2800A3E7F7 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		A5DFEB171560CE2800A3E7F7 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		A5DFEB181560CE2800A3E7F7 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		A5DFEB191560CE2800A3E7F7 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		A5DFEB1A1560CE2800A3E7F7 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		A5DFEB2F1561D98500A3E7F7 /* EntriesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntriesController.h; sourceTree = "<group>"; };
+		A5DFEB301561D98600A3E7F7 /* EntriesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntriesController.m; sourceTree = "<group>"; };
+		A5DFEB37156368D700A3E7F7 /* EditEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEntryController.h; sourceTree = "<group>"; };
+		A5DFEB38156368D700A3E7F7 /* EditEntryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEntryController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5C874AF155A30E60067A4FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C874B7155A30E60067A4FC /* UIKit.framework in Frameworks */,
+				A5C874B9155A30E60067A4FC /* Foundation.framework in Frameworks */,
+				A5C874BB155A30E60067A4FC /* CoreGraphics.framework in Frameworks */,
+				A5C874BD155A30E60067A4FC /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C874CE155A30E60067A4FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C874D4155A30E60067A4FC /* SenTestingKit.framework in Frameworks */,
+				A5C874D5155A30E60067A4FC /* UIKit.framework in Frameworks */,
+				A5C874D6155A30E60067A4FC /* Foundation.framework in Frameworks */,
+				A5C874D7155A30E60067A4FC /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5C874A7155A30E60067A4FC = {
+			isa = PBXGroup;
+			children = (
+				A5DFEB051560CE2800A3E7F7 /* AFNetworking */,
+				A5C874BE155A30E60067A4FC /* cronkite */,
+				A5C874DA155A30E60067A4FC /* cronkiteTests */,
+				A5C874B5155A30E60067A4FC /* Frameworks */,
+				A5C874B3155A30E60067A4FC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5C874B3155A30E60067A4FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5C874B2155A30E60067A4FC /* cronkite.app */,
+				A5C874D2155A30E60067A4FC /* cronkiteTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5C874B5155A30E60067A4FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5C874B6155A30E60067A4FC /* UIKit.framework */,
+				A5C874B8155A30E60067A4FC /* Foundation.framework */,
+				A5C874BA155A30E60067A4FC /* CoreGraphics.framework */,
+				A5C874BC155A30E60067A4FC /* CoreData.framework */,
+				A5C874D3155A30E60067A4FC /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5C874BE155A30E60067A4FC /* cronkite */ = {
+			isa = PBXGroup;
+			children = (
+				A5AD55C21560545100EAE7B4 /* AuthController.h */,
+				A5AD55C31560545100EAE7B4 /* AuthController.m */,
+				A5C874C7155A30E60067A4FC /* cronkiteAppDelegate.h */,
+				A5C874C8155A30E60067A4FC /* cronkiteAppDelegate.m */,
+				A5C874CA155A30E60067A4FC /* cronkite.xcdatamodeld */,
+				A59CB6021566850400AE42DC /* Entry.h */,
+				A59CB6031566850400AE42DC /* Entry.m */,
+				A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */,
+				A59CB606156AD31600AE42DC /* EditDateTimeController.h */,
+				A59CB607156AD31700AE42DC /* EditDateTimeController.m */,
+				A5DFEB37156368D700A3E7F7 /* EditEntryController.h */,
+				A5DFEB38156368D700A3E7F7 /* EditEntryController.m */,
+				A5DFEB2F1561D98500A3E7F7 /* EntriesController.h */,
+				A5DFEB301561D98600A3E7F7 /* EntriesController.m */,
+				A5C874BF155A30E60067A4FC /* Supporting Files */,
+			);
+			path = cronkite;
+			sourceTree = "<group>";
+		};
+		A5C874BF155A30E60067A4FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5C874C0155A30E60067A4FC /* cronkite-Info.plist */,
+				A5C874C1155A30E60067A4FC /* InfoPlist.strings */,
+				A5C874C4155A30E60067A4FC /* main.m */,
+				A5C874C6155A30E60067A4FC /* cronkite-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5C874DA155A30E60067A4FC /* cronkiteTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5C874E0155A30E70067A4FC /* cronkiteTests.h */,
+				A5C874E1155A30E70067A4FC /* cronkiteTests.m */,
+				A5C874DB155A30E70067A4FC /* Supporting Files */,
+			);
+			path = cronkiteTests;
+			sourceTree = "<group>";
+		};
+		A5C874DB155A30E70067A4FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5C874DC155A30E70067A4FC /* cronkiteTests-Info.plist */,
+				A5C874DD155A30E70067A4FC /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5DFEB051560CE2800A3E7F7 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFEB061560CE2800A3E7F7 /* AFHTTPClient.h */,
+				A5DFEB071560CE2800A3E7F7 /* AFHTTPClient.m */,
+				A5DFEB081560CE2800A3E7F7 /* AFHTTPRequestOperation.h */,
+				A5DFEB091560CE2800A3E7F7 /* AFHTTPRequestOperation.m */,
+				A5DFEB0A1560CE2800A3E7F7 /* AFImageRequestOperation.h */,
+				A5DFEB0B1560CE2800A3E7F7 /* AFImageRequestOperation.m */,
+				A5DFEB0C1560CE2800A3E7F7 /* AFJSONRequestOperation.h */,
+				A5DFEB0D1560CE2800A3E7F7 /* AFJSONRequestOperation.m */,
+				A5DFEB0E1560CE2800A3E7F7 /* AFJSONUtilities.h */,
+				A5DFEB0F1560CE2800A3E7F7 /* AFJSONUtilities.m */,
+				A5DFEB101560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.h */,
+				A5DFEB111560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m */,
+				A5DFEB121560CE2800A3E7F7 /* AFNetworking.h */,
+				A5DFEB131560CE2800A3E7F7 /* AFPropertyListRequestOperation.h */,
+				A5DFEB141560CE2800A3E7F7 /* AFPropertyListRequestOperation.m */,
+				A5DFEB151560CE2800A3E7F7 /* AFURLConnectionOperation.h */,
+				A5DFEB161560CE2800A3E7F7 /* AFURLConnectionOperation.m */,
+				A5DFEB171560CE2800A3E7F7 /* AFXMLRequestOperation.h */,
+				A5DFEB181560CE2800A3E7F7 /* AFXMLRequestOperation.m */,
+				A5DFEB191560CE2800A3E7F7 /* UIImageView+AFNetworking.h */,
+				A5DFEB1A1560CE2800A3E7F7 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5C874B1155A30E60067A4FC /* cronkite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C874E5155A30E70067A4FC /* Build configuration list for PBXNativeTarget "cronkite" */;
+			buildPhases = (
+				A5C874AE155A30E60067A4FC /* Sources */,
+				A5C874AF155A30E60067A4FC /* Frameworks */,
+				A5C874B0155A30E60067A4FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cronkite;
+			productName = cronkite;
+			productReference = A5C874B2155A30E60067A4FC /* cronkite.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5C874D1155A30E60067A4FC /* cronkiteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C874E8155A30E70067A4FC /* Build configuration list for PBXNativeTarget "cronkiteTests" */;
+			buildPhases = (
+				A5C874CD155A30E60067A4FC /* Sources */,
+				A5C874CE155A30E60067A4FC /* Frameworks */,
+				A5C874CF155A30E60067A4FC /* Resources */,
+				A5C874D0155A30E60067A4FC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5C874D9155A30E60067A4FC /* PBXTargetDependency */,
+			);
+			name = cronkiteTests;
+			productName = cronkiteTests;
+			productReference = A5C874D2155A30E60067A4FC /* cronkiteTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5C874A9155A30E60067A4FC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = A5C874AC155A30E60067A4FC /* Build configuration list for PBXProject "cronkite" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A5C874A7155A30E60067A4FC;
+			productRefGroup = A5C874B3155A30E60067A4FC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5C874B1155A30E60067A4FC /* cronkite */,
+				A5C874D1155A30E60067A4FC /* cronkiteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5C874B0155A30E60067A4FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C874C3155A30E60067A4FC /* InfoPlist.strings in Resources */,
+				A5AD55C11560527E00EAE7B4 /* Cronkite.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C874CF155A30E60067A4FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C874DF155A30E70067A4FC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5C874D0155A30E60067A4FC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5C874AE155A30E60067A4FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C874C5155A30E60067A4FC /* main.m in Sources */,
+				A5C874C9155A30E60067A4FC /* cronkiteAppDelegate.m in Sources */,
+				A5C874CC155A30E60067A4FC /* cronkite.xcdatamodeld in Sources */,
+				A5AD55C41560545100EAE7B4 /* AuthController.m in Sources */,
+				A5DFEB1B1560CE2800A3E7F7 /* AFHTTPClient.m in Sources */,
+				A5DFEB1D1560CE2800A3E7F7 /* AFHTTPRequestOperation.m in Sources */,
+				A5DFEB1F1560CE2800A3E7F7 /* AFImageRequestOperation.m in Sources */,
+				A5DFEB211560CE2800A3E7F7 /* AFJSONRequestOperation.m in Sources */,
+				A5DFEB231560CE2800A3E7F7 /* AFJSONUtilities.m in Sources */,
+				A5DFEB251560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A5DFEB271560CE2800A3E7F7 /* AFPropertyListRequestOperation.m in Sources */,
+				A5DFEB291560CE2800A3E7F7 /* AFURLConnectionOperation.m in Sources */,
+				A5DFEB2B1560CE2800A3E7F7 /* AFXMLRequestOperation.m in Sources */,
+				A5DFEB2D1560CE2800A3E7F7 /* UIImageView+AFNetworking.m in Sources */,
+				A5DFEB311561D98600A3E7F7 /* EntriesController.m in Sources */,
+				A5DFEB39156368D700A3E7F7 /* EditEntryController.m in Sources */,
+				A59CB6041566850400AE42DC /* Entry.m in Sources */,
+				A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C874CD155A30E60067A4FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C874E2155A30E70067A4FC /* cronkiteTests.m in Sources */,
+				A5AD55C51560545100EAE7B4 /* AuthController.m in Sources */,
+				A5DFEB1C1560CE2800A3E7F7 /* AFHTTPClient.m in Sources */,
+				A5DFEB1E1560CE2800A3E7F7 /* AFHTTPRequestOperation.m in Sources */,
+				A5DFEB201560CE2800A3E7F7 /* AFImageRequestOperation.m in Sources */,
+				A5DFEB221560CE2800A3E7F7 /* AFJSONRequestOperation.m in Sources */,
+				A5DFEB241560CE2800A3E7F7 /* AFJSONUtilities.m in Sources */,
+				A5DFEB261560CE2800A3E7F7 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A5DFEB281560CE2800A3E7F7 /* AFPropertyListRequestOperation.m in Sources */,
+				A5DFEB2A1560CE2800A3E7F7 /* AFURLConnectionOperation.m in Sources */,
+				A5DFEB2C1560CE2800A3E7F7 /* AFXMLRequestOperation.m in Sources */,
+				A5DFEB2E1560CE2800A3E7F7 /* UIImageView+AFNetworking.m in Sources */,
+				A5DFEB321561D98600A3E7F7 /* EntriesController.m in Sources */,
+				A5DFEB3A156368D700A3E7F7 /* EditEntryController.m in Sources */,
+				A59CB6051566850400AE42DC /* Entry.m in Sources */,
+				A59CB609156AD31700AE42DC /* EditDateTimeController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5C874D9155A30E60067A4FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5C874B1155A30E60067A4FC /* cronkite */;
+			targetProxy = A5C874D8155A30E60067A4FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5C874C1155A30E60067A4FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5C874C2155A30E60067A4FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5C874DD155A30E70067A4FC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5C874DE155A30E70067A4FC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5C874E3155A30E70067A4FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5C874E4155A30E70067A4FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5C874E6155A30E70067A4FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cronkite/cronkite-Prefix.pch";
+				INFOPLIST_FILE = "cronkite/cronkite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A5C874E7155A30E70067A4FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cronkite/cronkite-Prefix.pch";
+				INFOPLIST_FILE = "cronkite/cronkite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A5C874E9155A30E70067A4FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cronkite.app/cronkite";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cronkite/cronkite-Prefix.pch";
+				INFOPLIST_FILE = "cronkiteTests/cronkiteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		A5C874EA155A30E70067A4FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cronkite.app/cronkite";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cronkite/cronkite-Prefix.pch";
+				INFOPLIST_FILE = "cronkiteTests/cronkiteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5C874AC155A30E60067A4FC /* Build configuration list for PBXProject "cronkite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C874E3155A30E70067A4FC /* Debug */,
+				A5C874E4155A30E70067A4FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5C874E5155A30E70067A4FC /* Build configuration list for PBXNativeTarget "cronkite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C874E6155A30E70067A4FC /* Debug */,
+				A5C874E7155A30E70067A4FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5C874E8155A30E70067A4FC /* Build configuration list for PBXNativeTarget "cronkiteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C874E9155A30E70067A4FC /* Debug */,
+				A5C874EA155A30E70067A4FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5C874CA155A30E60067A4FC /* cronkite.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5C874CB155A30E60067A4FC /* cronkite.xcdatamodel */,
+			);
+			currentVersion = A5C874CB155A30E60067A4FC /* cronkite.xcdatamodel */;
+			path = cronkite.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A5C874A9155A30E60067A4FC /* Project object */;
+}
