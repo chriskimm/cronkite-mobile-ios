@@ -1,39 +1,46 @@
 #import "EditDateTimeController.h"
 
 @implementation EditDateTimeController
+
 @synthesize dateTimePicker;
+@synthesize dateLabel;
+@synthesize delegate;
+@synthesize entry = _entry;
+@synthesize wheelSelector;
 
 bool dirty = FALSE;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) {
-      // Custom initialization
-  }
-  return self;
+- (IBAction)done:(id)sender {
+  [self.delegate editDateTimeController:self upDate:[self.dateTimePicker date]];
 }
 
-- (IBAction)done:(id)sender {
-  
+- (IBAction)wheelChanged:(id)sender {
+  UISegmentedControl *segmentedControl = (UISegmentedControl *) sender;
+  NSInteger selectedSegment = segmentedControl.selectedSegmentIndex;
+   
+  if (selectedSegment == 0) {
+    [self.dateTimePicker setDatePickerMode:UIDatePickerModeDate];
+  } else {
+    [self.dateTimePicker setDatePickerMode:UIDatePickerModeDateAndTime];
+  }
 }
 
 #pragma mark - View lifecycle
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  [self.dateTimePicker setDate:[self.entry date]];
+  [self setDate:[self.entry date]];
 }
-*/
+
 
 - (void)viewDidUnload
 {
   [self setDateTimePicker:nil];
+  [self setDateLabel:nil];
+    [self setWheelSelector:nil];
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -43,7 +50,22 @@ bool dirty = FALSE;
 }
 
 - (IBAction)dateTimeChanged:(id)sender {
-  NSLog(@"something changed: %@", [self.dateTimePicker date]);
+  NSDate * date = [self.dateTimePicker date];
+  [self setDate:date];
+  [self.entry setDate:date];
   dirty = TRUE;
 }
+
+
+
+- (void)setDate:(NSDate *)date
+{
+  static NSDateFormatter *dateFormatter = nil;
+  if (dateFormatter == nil) {
+    dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm a"];
+  }
+  self.dateLabel.text = [dateFormatter stringFromDate:date];
+}
+
 @end

@@ -1,40 +1,18 @@
 #import "AuthController.h"
+#import "LoginController.h"
 
 @implementation AuthController
-@synthesize username;
-@synthesize password;
 
-- (IBAction)signIn:(id)sender {
-  NSLog(@"username: %@", [username text]);
-  NSLog(@"password: %@", [password text]);
-  [self performSegueWithIdentifier:@"loginSegue" sender:self];
-}
+@synthesize delegate;
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-  if (textField == self.username || textField == self.password) {
-    [textField resignFirstResponder];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+  if ([segue.identifier isEqualToString:@"Login"]) {
+    LoginController *lc = (LoginController *)[segue destinationViewController];
+    lc.delegate = delegate;    
+  } else if ([segue.identifier isEqualToString:@"Signup"]) {
+    NSLog(@"signup not implemented yet");
   }
-  return YES;
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-  [super viewDidLoad];
-}
-
-- (void)viewDidUnload
-{
-  [self setUsername:nil];
-  [self setPassword:nil];
-  [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-  // Return YES for supported orientations
-  return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end

@@ -5,20 +5,29 @@
 @synthesize managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
   if([segue.identifier isEqualToString:@"AddEntry"]){
     UINavigationController *nv = (UINavigationController *)[segue destinationViewController];
     EditEntryController *ntvc = (EditEntryController *)nv.topViewController;
     ntvc.delegate = self;
   } else if([segue.identifier isEqualToString:@"EditEntry"]){
     EditEntryController *eec = (EditEntryController *)[segue destinationViewController];
-    eec.delegate = self;    
+    eec.delegate = self;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     eec.entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+  } else if([segue.identifier isEqualToString:@"Settings"]){
+    SettingsController *sc = (SettingsController *)[segue destinationViewController];
+    sc.delegate = self;      
   }
 }
 
--(void) editEntryController:(EditEntryController *)eec addEntry:(Entry *)entry
+- (void)settingsDone
+{
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) editEntryController:(EditEntryController *)eec addEntry:(Entry *)entry
 {
   Entry *newEntry = (Entry *)[NSEntityDescription insertNewObjectForEntityForName:@"Entry" 
                                                            inManagedObjectContext:managedObjectContext];  
@@ -45,12 +54,9 @@
 -(void) editEntryController:(EditEntryController *)eec deleteEntry:(Entry *)entry 
 {
   [self.tableView beginUpdates]; // Avoid  NSInternalInconsistencyException
-  //NSLog(@"Deleting (%@)", roleToDelete.name);
   [self.managedObjectContext deleteObject:entry];
   [self.managedObjectContext save:nil];
   
-  // Delete the (now empty) row on the table
-  //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
   [self.tableView reloadData];
   [self.tableView endUpdates];
   [[self navigationController] popViewControllerAnimated:YES];
@@ -125,7 +131,6 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
   NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		// Update to handle the error appropriately.
@@ -140,6 +145,10 @@
   self.fetchedResultsController = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
   // Return YES for supported orientations
@@ -164,7 +173,7 @@
   static NSDateFormatter *dateFormatter = nil;   
   if (dateFormatter == nil) {  
     dateFormatter = [[NSDateFormatter alloc] init];  
-    [dateFormatter setDateFormat:@"h:mm.ss a"];  
+    [dateFormatter setDateFormat:@"MM/dd h:mm a"];  
   } 
   
   Entry *entry = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -172,9 +181,7 @@
   cell.detailTextLabel.text = [dateFormatter stringFromDate:[entry date]];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   static NSString *cellIdentifier = @"EntryCell";
   UITableViewCell *cell =
   [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -184,10 +191,8 @@
 
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-  // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
   [self.tableView beginUpdates];
 }
-
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
   
@@ -233,33 +238,6 @@
   // the table view to process all updates.
   [self.tableView endUpdates];
 }
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  static NSString *cellIdentifier = @"EntryCell";
-  
-  static NSDateFormatter *dateFormatter = nil;   
-  if (dateFormatter == nil) {  
-    dateFormatter = [[NSDateFormatter alloc] init];  
-    [dateFormatter setDateFormat:@"h:mm.ss a"];  
-  }  
-  
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];   
-  
-  if (cell == nil) {  
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];  
-  }   
-  
-  Entry *entry = [self.entries objectAtIndex: [indexPath row]];  
-  NSLog(@"row a: %@", entry.text1);
-  NSLog(@"row b: %@", [entry text1]);
-  [cell.textLabel setText:[entry text1]];
-  [cell.detailTextLabel setText:[dateFormatter stringFromDate:[entry date]]];
-  
-  return cell; 
-}
-*/
 
 /*
 // Override to support conditional editing of the table view.

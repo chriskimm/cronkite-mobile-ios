@@ -1,5 +1,6 @@
 #import "CronkiteAppDelegate.h"
 #import "EntriesController.h"
+#import "AuthController.h"
 
 @implementation CronkiteAppDelegate
 
@@ -10,28 +11,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  UINavigationController *rootNavigationController = (UINavigationController *)self.window.rootViewController;
-  EntriesController *entriesController = (EntriesController *)[rootNavigationController topViewController];
-  entriesController.managedObjectContext = self.managedObjectContext;
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"logged_in"]) {
+    [self showMainView];
+  } else {
+    [self showAuthView];
+  }
+  
   NSURL *docdir = [self applicationDocumentsDirectory];
   NSLog(@"path to doc dir: %@", [docdir path]);
   return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
+- (void)loginComplete
 {
+  NSLog(@"loging complete in delegate");
+  [self showMainView];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+- (void)showMainView
 {
+  UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+  UINavigationController *mainController = (UINavigationController *)[storyboard  instantiateViewControllerWithIdentifier:@"MainController"];
+  self.window.rootViewController = mainController;
+  
+  EntriesController *entriesController = (EntriesController *)[mainController topViewController];
+  entriesController.managedObjectContext = self.managedObjectContext;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
+- (void)showAuthView
 {
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+  UIStoryboard *storyboard = 
+        [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;  
+  UINavigationController *welcomeController = (UINavigationController *)[storyboard  instantiateViewControllerWithIdentifier:@"WelcomeController"];
+  
+  AuthController *authController = (AuthController *)[welcomeController topViewController];
+  authController.delegate = self;
+  self.window.rootViewController = welcomeController;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

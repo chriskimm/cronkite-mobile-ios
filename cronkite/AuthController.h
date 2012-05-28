@@ -1,10 +1,16 @@
 #import <UIKit/UIKit.h>
 
-@interface AuthController : UIViewController <UITextFieldDelegate>
+@protocol AuthControllerDelegate;
 
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *password;
+@interface AuthController : UIViewController
 
-- (IBAction)signIn:(id)sender;
+@property (strong, nonatomic) id<AuthControllerDelegate> delegate;
+
+@end
+
+
+@protocol AuthControllerDelegate <NSObject>
+
+- (void)loginComplete;
 
 @end

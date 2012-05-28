@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */; };
+		A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */; };
+		A59ACE001572912300F3DC48 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFF1572912200F3DC48 /* LoginController.m */; };
+		A59ACE011572912300F3DC48 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFF1572912200F3DC48 /* LoginController.m */; };
 		A59CB6041566850400AE42DC /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Entry.m */; };
 		A59CB6051566850400AE42DC /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Entry.m */; };
 		A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB607156AD31700AE42DC /* EditDateTimeController.m */; };
@@ -65,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A59ACDF91571DEDA00F3DC48 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
+		A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
+		A59ACDFE1572912200F3DC48 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		A59ACDFF1572912200F3DC48 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		A59CB6021566850400AE42DC /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
 		A59CB6031566850400AE42DC /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		A59CB606156AD31600AE42DC /* EditDateTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDateTimeController.h; sourceTree = "<group>"; };
@@ -143,6 +151,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A59ACDFD1571E3F000F3DC48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A59CB6021566850400AE42DC /* Entry.h */,
+				A59CB6031566850400AE42DC /* Entry.m */,
+				A5C874CA155A30E60067A4FC /* cronkite.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		A5C874A7155A30E60067A4FC = {
 			isa = PBXGroup;
 			children = (
@@ -178,13 +196,11 @@
 		A5C874BE155A30E60067A4FC /* cronkite */ = {
 			isa = PBXGroup;
 			children = (
+				A59ACDFD1571E3F000F3DC48 /* Model */,
 				A5AD55C21560545100EAE7B4 /* AuthController.h */,
 				A5AD55C31560545100EAE7B4 /* AuthController.m */,
 				A5C874C7155A30E60067A4FC /* cronkiteAppDelegate.h */,
 				A5C874C8155A30E60067A4FC /* cronkiteAppDelegate.m */,
-				A5C874CA155A30E60067A4FC /* cronkite.xcdatamodeld */,
-				A59CB6021566850400AE42DC /* Entry.h */,
-				A59CB6031566850400AE42DC /* Entry.m */,
 				A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */,
 				A59CB606156AD31600AE42DC /* EditDateTimeController.h */,
 				A59CB607156AD31700AE42DC /* EditDateTimeController.m */,
@@ -192,7 +208,11 @@
 				A5DFEB38156368D700A3E7F7 /* EditEntryController.m */,
 				A5DFEB2F1561D98500A3E7F7 /* EntriesController.h */,
 				A5DFEB301561D98600A3E7F7 /* EntriesController.m */,
+				A59ACDFE1572912200F3DC48 /* LoginController.h */,
+				A59ACDFF1572912200F3DC48 /* LoginController.m */,
 				A5C874BF155A30E60067A4FC /* Supporting Files */,
+				A59ACDF91571DEDA00F3DC48 /* SettingsController.h */,
+				A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */,
 			);
 			path = cronkite;
 			sourceTree = "<group>";
@@ -379,6 +399,8 @@
 				A5DFEB39156368D700A3E7F7 /* EditEntryController.m in Sources */,
 				A59CB6041566850400AE42DC /* Entry.m in Sources */,
 				A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */,
+				A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */,
+				A59ACE001572912300F3DC48 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +424,8 @@
 				A5DFEB3A156368D700A3E7F7 /* EditEntryController.m in Sources */,
 				A59CB6051566850400AE42DC /* Entry.m in Sources */,
 				A59CB609156AD31700AE42DC /* EditDateTimeController.m in Sources */,
+				A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */,
+				A59ACE011572912300F3DC48 /* LoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

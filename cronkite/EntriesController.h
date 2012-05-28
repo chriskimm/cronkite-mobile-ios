@@ -1,7 +1,10 @@
 #import <UIKit/UIKit.h>
 #import "EditEntryController.h"
+#import "SettingsController.h"
 
-@interface EntriesController : UITableViewController <EditEntryDelegate, NSFetchedResultsControllerDelegate>
+@interface EntriesController : UITableViewController <EditEntryDelegate,
+                                                      SettingsControllerDelegate,
+                                                      NSFetchedResultsControllerDelegate>
 {
   NSManagedObjectContext *managedObjectContext;  
   NSMutableArray *entries;
@@ -11,6 +14,5 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 
 - (void) allEntries;
-//- (void) addEntry:(id)sender; 
 
 @end
