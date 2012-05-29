@@ -12,5 +12,6 @@
 @protocol AuthControllerDelegate <NSObject>
 
 - (void)loginComplete;
+- (void)signupComplete;
 
 @end

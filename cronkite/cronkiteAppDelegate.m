@@ -28,6 +28,11 @@
   [self showMainView];
 }
 
+- (void)signupComplete
+{
+  NSLog(@"signupComplete in app delegate");
+}
+
 - (void)showMainView
 {
   UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;

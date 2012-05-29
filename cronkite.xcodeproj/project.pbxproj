@@ -11,6 +11,8 @@
 		A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */; };
 		A59ACE001572912300F3DC48 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFF1572912200F3DC48 /* LoginController.m */; };
 		A59ACE011572912300F3DC48 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFF1572912200F3DC48 /* LoginController.m */; };
+		A59ACE0515745A0700F3DC48 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACE0415745A0700F3DC48 /* SignupController.m */; };
+		A59ACE0615745A0700F3DC48 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACE0415745A0700F3DC48 /* SignupController.m */; };
 		A59CB6041566850400AE42DC /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Entry.m */; };
 		A59CB6051566850400AE42DC /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Entry.m */; };
 		A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB607156AD31700AE42DC /* EditDateTimeController.m */; };
@@ -73,6 +75,8 @@
 		A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		A59ACDFE1572912200F3DC48 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		A59ACDFF1572912200F3DC48 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		A59ACE0315745A0700F3DC48 /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
+		A59ACE0415745A0700F3DC48 /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
 		A59CB6021566850400AE42DC /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
 		A59CB6031566850400AE42DC /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
 		A59CB606156AD31600AE42DC /* EditDateTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDateTimeController.h; sourceTree = "<group>"; };
@@ -161,6 +165,27 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		A59ACE02157458D400F3DC48 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5AD55C21560545100EAE7B4 /* AuthController.h */,
+				A5AD55C31560545100EAE7B4 /* AuthController.m */,
+				A59CB606156AD31600AE42DC /* EditDateTimeController.h */,
+				A59CB607156AD31700AE42DC /* EditDateTimeController.m */,
+				A5DFEB37156368D700A3E7F7 /* EditEntryController.h */,
+				A5DFEB38156368D700A3E7F7 /* EditEntryController.m */,
+				A5DFEB2F1561D98500A3E7F7 /* EntriesController.h */,
+				A5DFEB301561D98600A3E7F7 /* EntriesController.m */,
+				A59ACDFE1572912200F3DC48 /* LoginController.h */,
+				A59ACDFF1572912200F3DC48 /* LoginController.m */,
+				A59ACDF91571DEDA00F3DC48 /* SettingsController.h */,
+				A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */,
+				A59ACE0315745A0700F3DC48 /* SignupController.h */,
+				A59ACE0415745A0700F3DC48 /* SignupController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		A5C874A7155A30E60067A4FC = {
 			isa = PBXGroup;
 			children = (
@@ -197,22 +222,11 @@
 			isa = PBXGroup;
 			children = (
 				A59ACDFD1571E3F000F3DC48 /* Model */,
-				A5AD55C21560545100EAE7B4 /* AuthController.h */,
-				A5AD55C31560545100EAE7B4 /* AuthController.m */,
+				A59ACE02157458D400F3DC48 /* Controller */,
 				A5C874C7155A30E60067A4FC /* cronkiteAppDelegate.h */,
 				A5C874C8155A30E60067A4FC /* cronkiteAppDelegate.m */,
 				A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */,
-				A59CB606156AD31600AE42DC /* EditDateTimeController.h */,
-				A59CB607156AD31700AE42DC /* EditDateTimeController.m */,
-				A5DFEB37156368D700A3E7F7 /* EditEntryController.h */,
-				A5DFEB38156368D700A3E7F7 /* EditEntryController.m */,
-				A5DFEB2F1561D98500A3E7F7 /* EntriesController.h */,
-				A5DFEB301561D98600A3E7F7 /* EntriesController.m */,
-				A59ACDFE1572912200F3DC48 /* LoginController.h */,
-				A59ACDFF1572912200F3DC48 /* LoginController.m */,
 				A5C874BF155A30E60067A4FC /* Supporting Files */,
-				A59ACDF91571DEDA00F3DC48 /* SettingsController.h */,
-				A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */,
 			);
 			path = cronkite;
 			sourceTree = "<group>";
@@ -401,6 +415,7 @@
 				A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */,
 				A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */,
 				A59ACE001572912300F3DC48 /* LoginController.m in Sources */,
+				A59ACE0515745A0700F3DC48 /* SignupController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +441,7 @@
 				A59CB609156AD31700AE42DC /* EditDateTimeController.m in Sources */,
 				A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */,
 				A59ACE011572912300F3DC48 /* LoginController.m in Sources */,
+				A59ACE0615745A0700F3DC48 /* SignupController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

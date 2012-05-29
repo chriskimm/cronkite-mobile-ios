@@ -1,5 +1,6 @@
 #import "AuthController.h"
 #import "LoginController.h"
+#import "SignupController.h"
 
 @implementation AuthController
 
@@ -11,7 +12,8 @@
     LoginController *lc = (LoginController *)[segue destinationViewController];
     lc.delegate = delegate;    
   } else if ([segue.identifier isEqualToString:@"Signup"]) {
-    NSLog(@"signup not implemented yet");
+    SignupController *sc = (SignupController *)[segue destinationViewController];
+    sc.delegate = delegate;    
   }
 }
 
