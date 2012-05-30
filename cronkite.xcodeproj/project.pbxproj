@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A564185B15766824000DEF31 /* CronkiteAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A564185A15766824000DEF31 /* CronkiteAPI.m */; };
+		A564185C15766824000DEF31 /* CronkiteAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A564185A15766824000DEF31 /* CronkiteAPI.m */; };
 		A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */; };
 		A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */; };
 		A59ACE001572912300F3DC48 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFF1572912200F3DC48 /* LoginController.m */; };
@@ -71,6 +73,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A564185915766824000DEF31 /* CronkiteAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CronkiteAPI.h; sourceTree = "<group>"; };
+		A564185A15766824000DEF31 /* CronkiteAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CronkiteAPI.m; sourceTree = "<group>"; };
 		A59ACDF91571DEDA00F3DC48 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		A59ACDFE1572912200F3DC48 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 			children = (
 				A59ACDFD1571E3F000F3DC48 /* Model */,
 				A59ACE02157458D400F3DC48 /* Controller */,
+				A564185915766824000DEF31 /* CronkiteAPI.h */,
+				A564185A15766824000DEF31 /* CronkiteAPI.m */,
 				A5C874C7155A30E60067A4FC /* cronkiteAppDelegate.h */,
 				A5C874C8155A30E60067A4FC /* cronkiteAppDelegate.m */,
 				A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */,
@@ -416,6 +422,7 @@
 				A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */,
 				A59ACE001572912300F3DC48 /* LoginController.m in Sources */,
 				A59ACE0515745A0700F3DC48 /* SignupController.m in Sources */,
+				A564185B15766824000DEF31 /* CronkiteAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +449,7 @@
 				A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */,
 				A59ACE011572912300F3DC48 /* LoginController.m in Sources */,
 				A59ACE0615745A0700F3DC48 /* SignupController.m in Sources */,
+				A564185C15766824000DEF31 /* CronkiteAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

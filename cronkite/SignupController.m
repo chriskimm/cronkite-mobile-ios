@@ -24,20 +24,27 @@
 
 - (IBAction)signUpPressed:(id)sender {
   // [self.delegate signupComplete];
+  NSURL *baseUrl = [NSURL URLWithString:@"http://localhost:9393/"];
+  AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseUrl];
+  [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
+  [client setDefaultHeader:@"Accept" value:@"application/json"];
   
-  NSLog(@"hello sign up email: %@", [self.emailField text]);
-  NSLog(@"hello sign up password: %@", [self.passwordField text]);
+  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [self.emailField text], @"email", 
+                          [self.passwordField text], @"password", nil];
   
-  AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://localhost:9393/"]];
-  [client postPath:@"api/account" parameters:
-      [NSDictionary dictionaryWithObjectsAndKeys:@"chriskimm@yahoo.com", @"email", @"foo", @"password", nil] 
-           success:^( AFHTTPRequestOperation *operation , id responseObject ) {
-             NSLog(@"success: %@", [responseObject class]);
+  [client postPath:@"api/account" parameters:params        
+           success:^( AFHTTPRequestOperation *operation , id responseObject) {
+             NSLog(@"success 1: %@", [responseObject class]);
+             NSLog(@"success 2: %@", responseObject);
+             NSString *auth_token = [responseObject valueForKey:@"auth_token"];
+             NSLog(@"value for auth_token: %@", auth_token);
+             [[NSUserDefaults standardUserDefaults] setValue:auth_token forKey:@"auth_token"];
+             [self.delegate signupComplete];
            } 
            failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"failure: %@", error);
            }];
-  NSLog(@"what the hex");
 }
 
 @end

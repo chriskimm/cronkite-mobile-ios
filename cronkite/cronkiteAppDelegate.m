@@ -31,6 +31,7 @@
 - (void)signupComplete
 {
   NSLog(@"signupComplete in app delegate");
+  [self showMainView];
 }
 
 - (void)showMainView

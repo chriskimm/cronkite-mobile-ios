@@ -48,7 +48,6 @@ BOOL newEntry = TRUE;
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-  NSLog(@"button: %d", buttonIndex);
   switch (buttonIndex) {
     case 0: 
       [self.delegate editEntryController:self deleteEntry:self.entry];

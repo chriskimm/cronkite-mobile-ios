@@ -1,4 +1,5 @@
 #import "LoginController.h"
+#import "CronkiteAPI.h"
 
 @implementation LoginController
 @synthesize username;
@@ -6,8 +7,12 @@
 @synthesize delegate;
 
 - (IBAction)signIn:(id)sender {
-  NSLog(@"username: %@", [username text]);
-  NSLog(@"password: %@", [password text]);
+  NSString *email = [username text];
+  NSString *pass = [password text];
+  
+  NSLog(@"username: %@", email);
+  NSLog(@"password: %@", pass);
+  [CronkiteAPI authWithEmail:email password:pass];
   [self.delegate loginComplete];
 }
 
