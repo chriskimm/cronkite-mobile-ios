@@ -3,9 +3,12 @@
 @implementation EditEntryController
 
 @synthesize delegate;
-@synthesize text1Field;
+@synthesize textField;
 @synthesize dateButton;
+@synthesize addLocationButton;
+@synthesize addPhotoButton;
 @synthesize entry = _entry;
+@synthesize locationManager;
 
 BOOL newEntry = TRUE;
 
@@ -24,12 +27,12 @@ BOOL newEntry = TRUE;
 }
 
 -(IBAction)done:(id)sender{
-  if([self.text1Field.text length] <= 0) {
-    NSLog(@"You have not entered a name for this task %@",self.text1Field.text);
+  if([self.textField.text length] <= 0) {
+    NSLog(@"You have not entered a name for this task %@",self.textField.text);
     return;
   }
 
-  self.entry.text1 = self.text1Field.text;
+  self.entry.text = self.textField.text;
   
   if (newEntry) {
     [self.delegate editEntryController:self addEntry:self.entry];
@@ -61,6 +64,34 @@ BOOL newEntry = TRUE;
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
+- (CLLocationManager *)locationManager
+{
+  if (locationManager != nil) {
+    return locationManager;    
+  }
+  locationManager = [[CLLocationManager alloc] init];
+  locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+  locationManager.delegate = self;
+  return locationManager;
+}
+
+- (IBAction)addLocation:(id)sender {
+  NSLog(@"add me some location!");
+}
+
+// CLLocatinManagerDelegate
+- (void)location:(CLLocationManager *)managerdidUpdateToLocation:(CLLocation *)newLocation
+  fromLocation:(CLLocation *)oldLocation {
+  addLocationButton.enabled = YES;
+}
+
+// CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error 
+{
+  addLocationButton.enabled = NO;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -70,7 +101,7 @@ BOOL newEntry = TRUE;
   NSDate *date = [NSDate date];
   if (self.entry == NULL) {
     newEntry = TRUE;
-    self.entry = [[Entry alloc] initWithText:@""];
+    self.entry = [[Item alloc] initWithText:@""];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] 
                                     initWithTitle: @"Cancel" 
                                     style:UIBarButtonItemStylePlain
@@ -79,7 +110,7 @@ BOOL newEntry = TRUE;
     self.navigationItem.leftBarButtonItem = backButton;
   } else {
     newEntry = FALSE;
-    self.text1Field.text = self.entry.text1;
+    self.textField.text = self.entry.text;
     date = self.entry.date;
   }
 
@@ -90,6 +121,7 @@ BOOL newEntry = TRUE;
   }
 
   [self.dateButton setTitle:[dateFormatter stringFromDate:date] forState:UIControlStateNormal];
+  [[self locationManager] startUpdatingLocation];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -99,7 +131,10 @@ BOOL newEntry = TRUE;
 
 - (void)viewDidUnload {
   [self setDateButton:nil];
-  [self setText1Field:nil];
+  [self setTextField:nil];
+  [self setAddLocationButton:nil];
+  [self setAddPhotoButton:nil];
+  [self setLocationManager:nil];
   [super viewDidUnload];
 }
 @end

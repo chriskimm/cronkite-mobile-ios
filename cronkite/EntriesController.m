@@ -27,31 +27,33 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) editEntryController:(EditEntryController *)eec addEntry:(Entry *)entry
+- (void) editEntryController:(EditEntryController *)eec addEntry:(Item *)entry
 {
-  Entry *newEntry = (Entry *)[NSEntityDescription insertNewObjectForEntityForName:@"Entry" 
+  Item *newEntry = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
                                                            inManagedObjectContext:managedObjectContext];  
-  newEntry.text1 = [entry text1];
+  newEntry.text = [entry text];
   newEntry.date = [NSDate date];
 
   NSError *error;
   if(![managedObjectContext save:&error]){
-    NSLog(@"ERROR saving entry");
+    NSLog(@"ERROR adding item: %@", error);
   }
 
   [self.tableView reloadData];
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void) editEntryController:(EditEntryController *)eec updateEntry:(Entry *)entry 
+-(void) editEntryController:(EditEntryController *)eec updateEntry:(Item *)entry 
 {
   NSError *error;
-  [managedObjectContext save:&error];
+  if(![managedObjectContext save:&error]){
+    NSLog(@"ERROR updating item");
+  }
   [self.tableView reloadData];
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
--(void) editEntryController:(EditEntryController *)eec deleteEntry:(Entry *)entry 
+-(void) editEntryController:(EditEntryController *)eec deleteEntry:(Item *)entry 
 {
   [self.tableView beginUpdates]; // Avoid  NSInternalInconsistencyException
   [self.managedObjectContext deleteObject:entry];
@@ -71,7 +73,7 @@
   
   if (_fetchedResultsController == nil) {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entry" 
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" 
                                               inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
   
@@ -96,7 +98,7 @@
 - (void) allEntries
 {
   // Define our table/entity to use
-  NSEntityDescription *entity = [NSEntityDescription entityForName:@"Entry" 
+  NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" 
                                             inManagedObjectContext:managedObjectContext];
     
   // Setup the fetch request
@@ -120,8 +122,8 @@
   }
   
   // Hackage!! Figure out what's up with lazy-loading
-  for (Entry *entry in mutableFetchResults) {
-    NSLog(@"text: %@", entry.text1);
+  for (Item *entry in mutableFetchResults) {
+    NSLog(@"text: %@", entry.text);
     NSLog(@"date: %@", entry.date);
   }
 }
@@ -176,8 +178,8 @@
     [dateFormatter setDateFormat:@"MM/dd h:mm a"];  
   } 
   
-  Entry *entry = [_fetchedResultsController objectAtIndexPath:indexPath];
-  cell.textLabel.text = entry.text1;
+  Item *entry = [_fetchedResultsController objectAtIndexPath:indexPath];
+  cell.textLabel.text = entry.text;
   cell.detailTextLabel.text = [dateFormatter stringFromDate:[entry date]];
 }
 

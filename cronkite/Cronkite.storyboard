@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11A511" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2OO-3R-7as">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2OO-3R-7as">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Login Controller - Auth-->
         <scene sceneID="uhd-Pg-s4M">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7b-cK-j9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -14,9 +16,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qjo-ZE-zza">
-                                <rect key="frame" x="89" y="196" width="142" height="37"/>
+                                <rect key="frame" x="43" y="120" width="235" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -28,8 +31,8 @@
                                     <action selector="signIn:" destination="ecW-wR-BQn" eventType="touchUpInside" id="NU2-6x-JEj"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="boI-O2-bjK">
-                                <rect key="frame" x="43" y="49" width="235" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="boI-O2-bjK">
+                                <rect key="frame" x="43" y="20" width="235" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
@@ -37,8 +40,8 @@
                                     <outlet property="delegate" destination="ecW-wR-BQn" id="URU-zd-vZV"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="dJ9-au-7vn">
-                                <rect key="frame" x="43" y="135" width="235" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" id="dJ9-au-7vn">
+                                <rect key="frame" x="43" y="66" width="235" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -46,20 +49,6 @@
                                     <outlet property="delegate" destination="ecW-wR-BQn" id="kRz-ae-mgd"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="username" lineBreakMode="tailTruncation" minimumFontSize="10" id="zqj-f5-Nxy">
-                                <rect key="frame" x="43" y="20" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="password" lineBreakMode="tailTruncation" minimumFontSize="10" id="GEu-gZ-ygx">
-                                <rect key="frame" x="43" y="106" width="75" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -72,6 +61,7 @@
             </objects>
             <point key="canvasLocation" x="1267" y="-1502"/>
         </scene>
+        <!--Entries Controller - Entries-->
         <scene sceneID="psV-JR-gmW">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mH-vu-DOQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,6 +123,7 @@
             </objects>
             <point key="canvasLocation" x="721" y="82"/>
         </scene>
+        <!--Edit Entry Controller-->
         <scene sceneID="F5Y-xL-J2I">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hxf-Nk-Esp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,6 +157,12 @@
                                 <rect key="frame" x="0.0" y="372" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
+                                    <barButtonItem systemItem="camera" id="0Z5-uz-zLW"/>
+                                    <barButtonItem systemItem="reply" id="X6T-gU-aU7">
+                                        <connections>
+                                            <action selector="addLocation:" destination="UkS-aN-PS3" id="aE3-cn-Ova"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="czG-sE-dla"/>
                                     <barButtonItem systemItem="trash" id="2Bv-fV-MTG">
                                         <connections>
@@ -185,13 +182,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addLocationButton" destination="X6T-gU-aU7" id="2Ct-Md-8Mu"/>
+                        <outlet property="addPhotoButton" destination="0Z5-uz-zLW" id="8nD-X6-RjT"/>
                         <outlet property="dateButton" destination="jYl-Ry-Df9" id="Wzf-0U-YNp"/>
-                        <outlet property="text1Field" destination="Zu1-YG-FUI" id="Slp-a3-nK7"/>
+                        <outlet property="textField" destination="Zu1-YG-FUI" id="mza-Zo-JOd"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1795" y="82"/>
         </scene>
+        <!--Edit Date Time Controller-->
         <scene sceneID="bh0-JG-Ipa">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vdR-Qc-akN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -269,6 +269,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2207" y="88"/>
         </scene>
+        <!--View Controller-->
         <scene sceneID="P67-W2-mJl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvP-fJ-IL0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +292,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-121" y="-489"/>
         </scene>
+        <!--Navigation Controller - Main-->
         <scene sceneID="l7Q-6L-CpW">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srr-Ze-idP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,6 +311,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="263" y="82"/>
         </scene>
+        <!--Auth Controller-->
         <scene sceneID="c54-eh-g9U">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDW-bY-Pyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,6 +358,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="721" y="-1095"/>
         </scene>
+        <!--Signup Controller-->
         <scene sceneID="aEx-Bc-Ajg">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y8e-W0-oSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -363,38 +367,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="eYr-7w-nl1">
-                                <rect key="frame" x="-3" y="0.0" width="342" height="416"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="CkU-A8-vg8">
-                                <rect key="frame" x="30" y="38" width="260" height="31"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" id="CkU-A8-vg8">
+                                <rect key="frame" x="30" y="20" width="260" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password" lineBreakMode="tailTruncation" minimumFontSize="10" id="e7E-fI-qVx">
-                                <rect key="frame" x="30" y="84" width="76" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" id="4D7-En-7x9">
+                                <rect key="frame" x="30" y="79" width="260" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="4D7-En-7x9">
-                                <rect key="frame" x="30" y="113" width="260" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Email" lineBreakMode="tailTruncation" minimumFontSize="10" id="kjk-bF-EZK">
-                                <rect key="frame" x="30" y="9" width="43" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DHu-Dn-l2d">
-                                <rect key="frame" x="83" y="174" width="154" height="37"/>
+                                <rect key="frame" x="83" y="137" width="154" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign Up">
@@ -420,6 +406,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1261" y="-872"/>
         </scene>
+        <!--Settings Controller-->
         <scene sceneID="bXU-45-ddm">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2jn-GV-huC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,6 +453,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1261" y="-281"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="bhj-5n-0zQ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gh1-PO-Fht" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,6 +472,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1261" y="394"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="YMA-cf-G6i">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ypt-W1-jSC" userLabel="First Responder" sceneMemberID="firstResponder"/>

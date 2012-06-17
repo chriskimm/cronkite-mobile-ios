@@ -1,33 +1,40 @@
 #import <UIKit/UIKit.h>
-#import "Entry.h"
+#import "Item.h"
 #import "EditDateTimeController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @protocol EditEntryDelegate;
 
 @interface EditEntryController : UIViewController <UITextFieldDelegate, 
                                                    UIActionSheetDelegate,
-                                                   EditDateTimeDelegate>
+                                                   EditDateTimeDelegate,
+                                                   CLLocationManagerDelegate>
 {
   id<EditEntryDelegate> delegate;
-  UITextField *text1Field;
+  UITextField *textField;
+  CLLocationManager *locationManager;
 }
 
-@property (strong, nonatomic) id<EditEntryDelegate> delegate;
-@property (strong, nonatomic) IBOutlet UITextField *text1Field;
-@property (strong, nonatomic) Entry *entry;
-@property (strong, nonatomic) IBOutlet UIButton *dateButton;
+@property (nonatomic, strong) id<EditEntryDelegate> delegate;
+@property (nonatomic, strong) IBOutlet UITextField *textField;
+@property (nonatomic, strong) IBOutlet UIButton *dateButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addLocationButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addPhotoButton;
+@property (nonatomic, strong) Item *entry;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
-- (IBAction) cancel:(id)sender;
-- (IBAction) done:(id)sender;
-- (IBAction) showActionSheet:(id)sender;
+- (IBAction)addLocation:(id)sender;
+- (IBAction)cancel:(id)sender;
+- (IBAction)done:(id)sender;
+- (IBAction)showActionSheet:(id)sender;
 
 @end
 
 @protocol EditEntryDelegate <NSObject>
 
-- (void) editEntryController:(EditEntryController *)eec addEntry:(Entry *)entry;
-- (void) editEntryController:(EditEntryController *)eec updateEntry:(Entry *)entry;
-- (void) editEntryController:(EditEntryController *)eec deleteEntry:(Entry *)entry;
+- (void) editEntryController:(EditEntryController *)eec addEntry:(Item *)entry;
+- (void) editEntryController:(EditEntryController *)eec updateEntry:(Item *)entry;
+- (void) editEntryController:(EditEntryController *)eec deleteEntry:(Item *)entry;
 - (void) cancelEdit:(EditEntryController *)eec;
 
 @end

@@ -1,5 +1,7 @@
 #import "SettingsController.h"
 #import "cronkiteAppDelegate.h"
+#import "CronkiteAPI.h"
+#import "AuthUtil.h"
 
 @implementation SettingsController
 
@@ -23,7 +25,6 @@
 }
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-  NSLog(@"button: %d", buttonIndex);
   switch (buttonIndex) {
     case 0: 
       [self logout];
@@ -33,7 +34,15 @@
 
 - (void)logout
 {
-   CronkiteAppDelegate *appDelegate = (CronkiteAppDelegate *)[[UIApplication sharedApplication] delegate];
+  NSString *accountKey = [AuthUtil currentAccount];
+  NSString *accessToken = [AuthUtil accessTokenForCurrentAccount];
+  [[CronkiteAPI instance] logout:accountKey accessToken:accessToken];
+  
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"access_token"];
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"account_key"];
+
+  CronkiteAppDelegate *appDelegate = 
+      (CronkiteAppDelegate *)[[UIApplication sharedApplication] delegate];
   [appDelegate showAuthView];
 }
 
@@ -41,8 +50,6 @@
 {
   [self setNavBar:nil];
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
-  // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

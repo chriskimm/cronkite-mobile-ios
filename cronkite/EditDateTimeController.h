@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#import "Entry.h"
+#import "Item.h"
 
 @protocol EditDateTimeDelegate;
 
@@ -8,7 +8,7 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) id<EditDateTimeDelegate> delegate;
-@property (strong, nonatomic) Entry * entry;
+@property (strong, nonatomic) Item * entry;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *wheelSelector;
 
 - (IBAction)dateTimeChanged:(id)sender;
