@@ -1,4 +1,6 @@
 #import "EditEntryController.h"
+#import "DataManager.h"
+#import "Location.h"
 
 @implementation EditEntryController
 
@@ -34,7 +36,25 @@ BOOL newEntry = TRUE;
 
   self.entry.text = self.textField.text;
   
+
+  for (id obj in locations) {
+    NSDictionary *d = (NSDictionary *)obj;
+    NSLog(@"hello: %@", d);
+  }
+  
   if (newEntry) {
+
+    NSManagedObjectContext *moc = [[DataManager instance] moc];
+    Item *newEntry = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
+                                                           inManagedObjectContext:moc];  
+    newEntry.text = self.textField.text;
+    newEntry.date = [NSDate date];
+    
+    NSError *error;
+    if(![moc save:&error]){
+      NSLog(@"ERROR adding item: %@", error);
+    }
+    
     [self.delegate editEntryController:self addEntry:self.entry];
   } else {
     [self.delegate editEntryController:self updateEntry:self.entry];
@@ -53,7 +73,8 @@ BOOL newEntry = TRUE;
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
   switch (buttonIndex) {
     case 0: 
-      [self.delegate editEntryController:self deleteEntry:self.entry];
+      self.entry.delete_status = [NSNumber numberWithInt:1];
+      [self.delegate editEntryController:self updateEntry:self.entry];
       break;
   }
 }
@@ -77,6 +98,30 @@ BOOL newEntry = TRUE;
 
 - (IBAction)addLocation:(id)sender {
   NSLog(@"add me some location!");
+
+  /*
+  CLLocation *loc = [locationManager location];
+  if (!loc) {
+    return;
+  }
+  Location *location = (Location *)[NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:[[DataManager instance] moc]];
+  //CLLocationCoordinate2D coordinate = [loc coordinate];
+
+  [location setName:@"test location"];
+  [location setLat:@"foolat"];
+  [location setLon:@"foolon"];
+   */
+  NSMutableDictionary *loc = [[NSMutableDictionary alloc] init];
+  [loc setObject:@"1234" forKey:@"lat"];
+  [loc setObject:@"1234" forKey:@"lon"];
+  [locations addObject:loc];
+
+   /*
+   CLLocationCoordinate2D coordinate = [location coordinate];
+   [event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
+   [event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
+   [event setCreationDate:[NSDate date]];
+  */
 }
 
 // CLLocatinManagerDelegate
@@ -97,11 +142,12 @@ BOOL newEntry = TRUE;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
+  locations = [[NSMutableArray alloc] init];
   
   NSDate *date = [NSDate date];
   if (self.entry == NULL) {
     newEntry = TRUE;
-    self.entry = [[Item alloc] initWithText:@""];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] 
                                     initWithTitle: @"Cancel" 
                                     style:UIBarButtonItemStylePlain
@@ -135,6 +181,7 @@ BOOL newEntry = TRUE;
   [self setAddLocationButton:nil];
   [self setAddPhotoButton:nil];
   [self setLocationManager:nil];
+  locations = nil;
   [super viewDidUnload];
 }
 @end

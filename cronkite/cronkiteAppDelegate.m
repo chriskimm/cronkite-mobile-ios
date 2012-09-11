@@ -4,6 +4,7 @@
 #import "DataManager.h"
 #import "CronkiteAPI.h"
 #import "AuthUtil.h"
+#import "Syncer.h"
 
 @implementation CronkiteAppDelegate
 
@@ -41,28 +42,7 @@
   EntriesController *entriesController = (EntriesController *)[mainController topViewController];
   entriesController.managedObjectContext = [[DataManager instance] moc];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(sync:)
-                                               name:NSManagedObjectContextDidSaveNotification
-                                             object:[[DataManager instance] moc]];    
-}
-
-- (void)sync:(NSNotification *)notification
-{
-  //Collect items to be synced
-  
-  void (^successBlock)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *oper, id response) {
-    NSLog(@"sync response: %@", response);
-  };
-  
-  void (^failureBlock)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *oper, NSError *error) {
-    NSLog(@"sync failure: %@", [error debugDescription]);
-  };  
-
-  [[CronkiteAPI instance] syncWithToken:[AuthUtil accessTokenForCurrentAccount]
-                             accountKey:[AuthUtil currentAccount]
-                                success:successBlock
-                                failure:failureBlock];
+  [[Syncer instance] startListening];
 }
 
 - (void)showAuthView
@@ -81,13 +61,6 @@
 {
   // Saves changes in the application's managed object context before the application terminates.
   [[DataManager instance] saveContext];
-}
-
-- (void)dealloc
-{
-  [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                  name:NSManagedObjectContextDidSaveNotification
-                                                object:nil];
 }
 
 @end

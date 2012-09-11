@@ -6,11 +6,12 @@
 @synthesize mom = __managedObjectModel;
 @synthesize psc = __persistentStoreCoordinator;
 
-+ (DataManager*)instance {
-  static dispatch_once_t pred;
++ (DataManager *)instance {
 	static DataManager *sharedInstance = nil;
-  
-	dispatch_once(&pred, ^{ sharedInstance = [[self alloc] init]; });
+  static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{ 
+    sharedInstance = [[self alloc] init]; 
+  });
 	return sharedInstance;
 }
 
@@ -59,11 +60,10 @@
  */
 - (NSManagedObjectModel *)mom
 {
-  if (__managedObjectModel != nil) {
-    return __managedObjectModel;
+  if (__managedObjectModel == nil) {
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"cronkite" withExtension:@"momd"];
+    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
   }
-  NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"cronkite" withExtension:@"momd"];
-  __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
   return __managedObjectModel;
 }
 

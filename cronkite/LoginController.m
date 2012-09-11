@@ -14,7 +14,7 @@
   void (^mySuccess)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *oper, id response) {
     NSString *access_token = [response valueForKey:@"access_token"];
     NSString *account_key = [response valueForKey:@"account_key"];
-    NSLog(@"login success response: %@", response);
+    //NSLog(@"login success response: %@", response);
     [[NSUserDefaults standardUserDefaults] setValue:access_token forKey:@"access_token"];
     [[NSUserDefaults standardUserDefaults] setValue:account_key forKey:@"account_key"];
     [self.delegate loginComplete];
@@ -42,7 +42,6 @@
   };
   
   [[CronkiteAPI instance] authWithEmail:email password:pass success:mySuccess failure:myFailure];
-  
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

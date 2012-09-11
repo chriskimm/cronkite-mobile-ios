@@ -1,4 +1,8 @@
 #import "CronkiteAPI.h"
+#import "DataManager.h"
+#import "Item.h"
+#import "AuthUtil.h"
+#import "FormatUtil.h"
 
 @implementation CronkiteAPI
 
@@ -19,6 +23,7 @@ static CronkiteAPI *singleton;
   if (self = [super init]) {
     NSURL *baseUrl = [NSURL URLWithString:@"http://localhost:9393/"];
     client = [[AFHTTPClient alloc] initWithBaseURL:baseUrl];
+    [client setParameterEncoding:AFJSONParameterEncoding];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
   }
@@ -46,12 +51,44 @@ static CronkiteAPI *singleton;
               success:(void (^)(AFHTTPRequestOperation *, id))successBlock
               failure:(void (^)(AFHTTPRequestOperation *, NSError *))failureBlock
 {
-  NSLog(@"dbug 1 %@", token);
-  NSLog(@"dbug 2 %@", accountKey);
+  NSManagedObjectContext *moc = [[DataManager instance] moc];
+  
+  // Get last updated_at value
+  NSFetchRequest *lastModifiedFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
+  NSArray *lastModifiedSortDescriptor = 
+      [NSArray arrayWithObject: [NSSortDescriptor sortDescriptorWithKey:@"updated_at" ascending:NO]];
+  [lastModifiedFetchRequest setSortDescriptors:lastModifiedSortDescriptor];
+  [lastModifiedFetchRequest setFetchLimit:1];
+  NSError *lastModifiedError = nil;
+  NSArray *lastModifiedResults = 
+      [moc executeFetchRequest:lastModifiedFetchRequest error:&lastModifiedError];
+  NSDate *lastModified = nil;
+  if ([lastModifiedResults lastObject]) {
+    lastModified = [[lastModifiedResults lastObject] valueForKey:@"updated_at"];
+  }
+  
+  if (!lastModified) {
+    lastModified = [NSDate distantPast];
+  }
+
+  // Get all Items that need to be synced
+  NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Item"];
+  NSError *error = nil;
+  NSPredicate *syncPredicate = [NSPredicate predicateWithFormat:@"sync_status == 1"];
+  [fetchRequest setPredicate:syncPredicate];
+  [fetchRequest setSortDescriptors:lastModifiedSortDescriptor];
+  NSArray *items = [moc executeFetchRequest:fetchRequest error:&error];
+  NSMutableArray *itemsJSON = [[NSMutableArray alloc] init];
+  for (Item *item in items) {
+    [itemsJSON addObject:[item dataDict]];
+  }
   
   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             accountKey, @"account_key", 
-                            token, @"access_token", nil];
+                            token, @"access_token",
+                            [FormatUtil toISO8601:lastModified], @"last_updated_at",
+                            itemsJSON, @"items", nil];
+  
   [client postPath:@"api/sync" parameters:params success:successBlock failure:failureBlock];
 }
 

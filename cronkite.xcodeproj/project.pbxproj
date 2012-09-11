@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52836C215FC739D005128B0 /* FormatUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A52836C115FC739D005128B0 /* FormatUtil.m */; };
+		A52836C615FD744F005128B0 /* Syncer.m in Sources */ = {isa = PBXBuildFile; fileRef = A52836C515FD744F005128B0 /* Syncer.m */; };
 		A558B8BD158D70F000C63539 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A558B8BC158D70F000C63539 /* CoreLocation.framework */; };
+		A558B8C1158E399100C63539 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A558B8C0158E399100C63539 /* Location.m */; };
+		A558B8C2158E399100C63539 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A558B8C0158E399100C63539 /* Location.m */; };
+		A558B8C5158E399200C63539 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = A558B8C4158E399200C63539 /* Item.m */; };
+		A558B8C6158E399200C63539 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = A558B8C4158E399200C63539 /* Item.m */; };
 		A564185B15766824000DEF31 /* CronkiteAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A564185A15766824000DEF31 /* CronkiteAPI.m */; };
 		A564185C15766824000DEF31 /* CronkiteAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A564185A15766824000DEF31 /* CronkiteAPI.m */; };
 		A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFA1571DEDA00F3DC48 /* SettingsController.m */; };
@@ -16,8 +22,6 @@
 		A59ACE011572912300F3DC48 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACDFF1572912200F3DC48 /* LoginController.m */; };
 		A59ACE0515745A0700F3DC48 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACE0415745A0700F3DC48 /* SignupController.m */; };
 		A59ACE0615745A0700F3DC48 /* SignupController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59ACE0415745A0700F3DC48 /* SignupController.m */; };
-		A59CB6041566850400AE42DC /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Item.m */; };
-		A59CB6051566850400AE42DC /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB6031566850400AE42DC /* Item.m */; };
 		A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB607156AD31700AE42DC /* EditDateTimeController.m */; };
 		A59CB609156AD31700AE42DC /* EditDateTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59CB607156AD31700AE42DC /* EditDateTimeController.m */; };
 		A5AD55C11560527E00EAE7B4 /* Cronkite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */; };
@@ -77,7 +81,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A52836C015FC739D005128B0 /* FormatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormatUtil.h; sourceTree = "<group>"; };
+		A52836C115FC739D005128B0 /* FormatUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FormatUtil.m; sourceTree = "<group>"; };
+		A52836C415FD744F005128B0 /* Syncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Syncer.h; sourceTree = "<group>"; };
+		A52836C515FD744F005128B0 /* Syncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Syncer.m; sourceTree = "<group>"; };
 		A558B8BC158D70F000C63539 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A558B8BF158E399100C63539 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		A558B8C0158E399100C63539 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		A558B8C3158E399200C63539 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		A558B8C4158E399200C63539 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		A564185915766824000DEF31 /* CronkiteAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CronkiteAPI.h; sourceTree = "<group>"; };
 		A564185A15766824000DEF31 /* CronkiteAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CronkiteAPI.m; sourceTree = "<group>"; };
 		A59ACDF91571DEDA00F3DC48 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
@@ -86,8 +98,6 @@
 		A59ACDFF1572912200F3DC48 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		A59ACE0315745A0700F3DC48 /* SignupController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupController.h; sourceTree = "<group>"; };
 		A59ACE0415745A0700F3DC48 /* SignupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupController.m; sourceTree = "<group>"; };
-		A59CB6021566850400AE42DC /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Item.h; sourceTree = "<group>"; };
-		A59CB6031566850400AE42DC /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		A59CB606156AD31600AE42DC /* EditDateTimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditDateTimeController.h; sourceTree = "<group>"; };
 		A59CB607156AD31700AE42DC /* EditDateTimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditDateTimeController.m; sourceTree = "<group>"; };
 		A5AD55C01560527E00EAE7B4 /* Cronkite.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cronkite.storyboard; sourceTree = "<group>"; };
@@ -172,9 +182,13 @@
 		A59ACDFD1571E3F000F3DC48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A59CB6021566850400AE42DC /* Item.h */,
-				A59CB6031566850400AE42DC /* Item.m */,
 				A5C874CA155A30E60067A4FC /* cronkite.xcdatamodeld */,
+				A558B8C3158E399200C63539 /* Item.h */,
+				A558B8C4158E399200C63539 /* Item.m */,
+				A558B8BF158E399100C63539 /* Location.h */,
+				A558B8C0158E399100C63539 /* Location.m */,
+				A52836C415FD744F005128B0 /* Syncer.h */,
+				A52836C515FD744F005128B0 /* Syncer.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -314,6 +328,8 @@
 			children = (
 				A5EF054C1584059F00C1D0E2 /* AuthUtil.h */,
 				A5EF054D1584059F00C1D0E2 /* AuthUtil.m */,
+				A52836C015FC739D005128B0 /* FormatUtil.h */,
+				A52836C115FC739D005128B0 /* FormatUtil.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -440,7 +456,6 @@
 				A5DFEB2D1560CE2800A3E7F7 /* UIImageView+AFNetworking.m in Sources */,
 				A5DFEB311561D98600A3E7F7 /* EntriesController.m in Sources */,
 				A5DFEB39156368D700A3E7F7 /* EditEntryController.m in Sources */,
-				A59CB6041566850400AE42DC /* Item.m in Sources */,
 				A59CB608156AD31700AE42DC /* EditDateTimeController.m in Sources */,
 				A59ACDFB1571DEDA00F3DC48 /* SettingsController.m in Sources */,
 				A59ACE001572912300F3DC48 /* LoginController.m in Sources */,
@@ -448,6 +463,10 @@
 				A564185B15766824000DEF31 /* CronkiteAPI.m in Sources */,
 				A5EF054E1584059F00C1D0E2 /* AuthUtil.m in Sources */,
 				A5EF05511585BC6600C1D0E2 /* DataManager.m in Sources */,
+				A558B8C1158E399100C63539 /* Location.m in Sources */,
+				A558B8C5158E399200C63539 /* Item.m in Sources */,
+				A52836C215FC739D005128B0 /* FormatUtil.m in Sources */,
+				A52836C615FD744F005128B0 /* Syncer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,13 +488,14 @@
 				A5DFEB2E1560CE2800A3E7F7 /* UIImageView+AFNetworking.m in Sources */,
 				A5DFEB321561D98600A3E7F7 /* EntriesController.m in Sources */,
 				A5DFEB3A156368D700A3E7F7 /* EditEntryController.m in Sources */,
-				A59CB6051566850400AE42DC /* Item.m in Sources */,
 				A59CB609156AD31700AE42DC /* EditDateTimeController.m in Sources */,
 				A59ACDFC1571DEDA00F3DC48 /* SettingsController.m in Sources */,
 				A59ACE011572912300F3DC48 /* LoginController.m in Sources */,
 				A59ACE0615745A0700F3DC48 /* SignupController.m in Sources */,
 				A564185C15766824000DEF31 /* CronkiteAPI.m in Sources */,
 				A5EF05521585BC6600C1D0E2 /* DataManager.m in Sources */,
+				A558B8C2158E399100C63539 /* Location.m in Sources */,
+				A558B8C6158E399200C63539 /* Item.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +529,61 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A5A1A20015A17260009CB5C3 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Production;
+		};
+		A5A1A20115A17260009CB5C3 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cronkite/cronkite-Prefix.pch";
+				INFOPLIST_FILE = "cronkite/cronkite-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Production;
+		};
+		A5A1A20215A17260009CB5C3 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/cronkite.app/cronkite";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "cronkite/cronkite-Prefix.pch";
+				INFOPLIST_FILE = "cronkiteTests/cronkiteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Production;
+		};
 		A5C874E3155A30E70067A4FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -621,6 +696,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5C874E3155A30E70067A4FC /* Debug */,
+				A5A1A20015A17260009CB5C3 /* Production */,
 				A5C874E4155A30E70067A4FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -630,6 +706,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5C874E6155A30E70067A4FC /* Debug */,
+				A5A1A20115A17260009CB5C3 /* Production */,
 				A5C874E7155A30E70067A4FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -639,6 +716,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5C874E9155A30E70067A4FC /* Debug */,
+				A5A1A20215A17260009CB5C3 /* Production */,
 				A5C874EA155A30E70067A4FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Attribute" syncable="YES">
-        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="created" attributeType="Date" indexed="YES" syncable="YES"/>
-        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="date" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="delete_status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="guid" attributeType="String" syncable="YES"/>
-        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="sync_status" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
-        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Attribute" syncable="YES"/>
+        <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Location" inverseName="relationship" inverseEntity="Location" syncable="YES"/>
     </entity>
+    <entity name="Location" representedClassName="Location" parentEntity="Item" syncable="YES">
+        <attribute name="lat" attributeType="String" syncable="YES"/>
+        <attribute name="lon" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="locations" inverseEntity="Item" syncable="YES"/>
+    </entity>
+    <fetchRequest name="all_not_synced" entity="Item" predicateString="sync_status == 1"/>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="Attribute" positionX="-234" positionY="-18" width="128" height="90"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="Location" positionX="-234" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

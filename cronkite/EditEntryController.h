@@ -8,11 +8,11 @@
 @interface EditEntryController : UIViewController <UITextFieldDelegate, 
                                                    UIActionSheetDelegate,
                                                    EditDateTimeDelegate,
-                                                   CLLocationManagerDelegate>
-{
+                                                   CLLocationManagerDelegate> {
   id<EditEntryDelegate> delegate;
   UITextField *textField;
   CLLocationManager *locationManager;
+  NSMutableArray *locations;
 }
 
 @property (nonatomic, strong) id<EditEntryDelegate> delegate;
@@ -34,7 +34,6 @@
 
 - (void) editEntryController:(EditEntryController *)eec addEntry:(Item *)entry;
 - (void) editEntryController:(EditEntryController *)eec updateEntry:(Item *)entry;
-- (void) editEntryController:(EditEntryController *)eec deleteEntry:(Item *)entry;
 - (void) cancelEdit:(EditEntryController *)eec;
 
 @end

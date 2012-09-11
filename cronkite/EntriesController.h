@@ -7,12 +7,9 @@
                                                       NSFetchedResultsControllerDelegate>
 {
   NSManagedObjectContext *managedObjectContext;  
-  NSMutableArray *entries;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-
-- (void) allEntries;
 
 @end

@@ -1,4 +1,5 @@
 #import "EntriesController.h"
+#import "DataManager.h"
 
 @implementation EntriesController
 
@@ -29,38 +30,18 @@
 
 - (void) editEntryController:(EditEntryController *)eec addEntry:(Item *)entry
 {
-  Item *newEntry = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
-                                                           inManagedObjectContext:managedObjectContext];  
-  newEntry.text = [entry text];
-  newEntry.date = [NSDate date];
-
-  NSError *error;
-  if(![managedObjectContext save:&error]){
-    NSLog(@"ERROR adding item: %@", error);
-  }
-
   [self.tableView reloadData];
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) editEntryController:(EditEntryController *)eec updateEntry:(Item *)entry 
 {
+  [entry setSync_status:[NSNumber numberWithInt:1]];
   NSError *error;
   if(![managedObjectContext save:&error]){
     NSLog(@"ERROR updating item");
   }
   [self.tableView reloadData];
-  [[self navigationController] popViewControllerAnimated:YES];
-}
-
--(void) editEntryController:(EditEntryController *)eec deleteEntry:(Item *)entry 
-{
-  [self.tableView beginUpdates]; // Avoid  NSInternalInconsistencyException
-  [self.managedObjectContext deleteObject:entry];
-  [self.managedObjectContext save:nil];
-  
-  [self.tableView reloadData];
-  [self.tableView endUpdates];
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -76,56 +57,25 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" 
                                               inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];
-  
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"delete_status == 0"]];
+    
     NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
   
     [fetchRequest setFetchBatchSize:20];
   
     NSFetchedResultsController *theFetchedResultsController =
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                        managedObjectContext:managedObjectContext 
-                                          sectionNameKeyPath:nil
-                                                   cacheName:@"Root"];
+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                            managedObjectContext:managedObjectContext 
+                                              sectionNameKeyPath:nil
+                                                       cacheName:nil];
+                                                       //cacheName:@"Root"];
     self.fetchedResultsController = theFetchedResultsController;
     _fetchedResultsController.delegate = self;
   }
     
   return _fetchedResultsController;
   
-}
-
-- (void) allEntries
-{
-  // Define our table/entity to use
-  NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" 
-                                            inManagedObjectContext:managedObjectContext];
-    
-  // Setup the fetch request
-  NSFetchRequest *request = [[NSFetchRequest alloc] init];
-  [request setEntity:entity];
-    
-  // Define how we will sort the records
-  NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-  NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    
-  [request setSortDescriptors:sortDescriptors];
-    
-  // Fetch the records and handle an error
-  NSError *error;
-  NSMutableArray *mutableFetchResults = 
-        [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-    
-  if (!mutableFetchResults) {
-    NSLog(@"Error fetching results");
-    // Handle the error.
-  }
-  
-  // Hackage!! Figure out what's up with lazy-loading
-  for (Item *entry in mutableFetchResults) {
-    NSLog(@"text: %@", entry.text);
-    NSLog(@"date: %@", entry.date);
-  }
 }
 
 #pragma mark - View lifecycle
@@ -241,44 +191,11 @@
   [self.tableView endUpdates];
 }
 
-/*
-// Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+  // The specified item is not editable.
+  return NO;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
