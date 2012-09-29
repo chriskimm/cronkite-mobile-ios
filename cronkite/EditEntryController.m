@@ -11,6 +11,7 @@
 @synthesize addPhotoButton;
 @synthesize entry = _entry;
 @synthesize locationManager;
+@synthesize managedObjectContext;
 
 BOOL newEntry = TRUE;
 
@@ -18,8 +19,12 @@ BOOL newEntry = TRUE;
 {
   if([segue.identifier isEqualToString:@"editDateTime"]) {
     EditDateTimeController *edtc = (EditDateTimeController *)[segue destinationViewController];
-    edtc.delegate = self;   
-    edtc.entry = self.entry;
+    edtc.delegate = self;
+    if (self.date) {
+      [edtc setDate:self.date];
+    } else {
+      [edtc setDate:self.entry.date];
+    }
   }
 }
 
@@ -36,28 +41,31 @@ BOOL newEntry = TRUE;
 
   self.entry.text = self.textField.text;
   
-
   for (id obj in locations) {
     NSDictionary *d = (NSDictionary *)obj;
     NSLog(@"hello: %@", d);
   }
   
   if (newEntry) {
-
-    NSManagedObjectContext *moc = [[DataManager instance] moc];
     Item *newEntry = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
-                                                           inManagedObjectContext:moc];  
+                                                  inManagedObjectContext:self.managedObjectContext];
     newEntry.text = self.textField.text;
-    newEntry.date = [NSDate date];
-    
-    NSError *error;
-    if(![moc save:&error]){
-      NSLog(@"ERROR adding item: %@", error);
+    if (self.date != nil) {
+      newEntry.date = self.date;
+    } else {
+      newEntry.date = [NSDate date];
     }
     
     [self.delegate editEntryController:self addEntry:self.entry];
   } else {
+    self.entry.date = self.date;
+    [self.entry setSync_status:[NSNumber numberWithInt:1]];
     [self.delegate editEntryController:self updateEntry:self.entry];
+  }
+  
+  NSError *error;
+  if(![managedObjectContext save:&error]){
+    NSLog(@"Item ERROR: %@", error);
   }
 }
 
@@ -81,7 +89,7 @@ BOOL newEntry = TRUE;
   
 - (void) editDateTimeController:(EditDateTimeController *)edtc upDate:(NSDate *)date
 {
-  self.dateButton.titleLabel.text = [date description];
+  [self setFormattedDate:date];
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -160,15 +168,21 @@ BOOL newEntry = TRUE;
     date = self.entry.date;
   }
 
+  [self setFormattedDate:date];
+  [[self locationManager] startUpdatingLocation];
+}
+
+- (void)setFormattedDate:(NSDate *)date
+{
+  self.date = date;
   static NSDateFormatter *dateFormatter = nil;
   if (dateFormatter == nil) {
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm a"];
   }
-
   [self.dateButton setTitle:[dateFormatter stringFromDate:date] forState:UIControlStateNormal];
-  [[self locationManager] startUpdatingLocation];
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

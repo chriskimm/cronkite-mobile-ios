@@ -5,18 +5,21 @@
 
 @synthesize managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize searchResults;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
   if([segue.identifier isEqualToString:@"AddEntry"]){
     UINavigationController *nv = (UINavigationController *)[segue destinationViewController];
-    EditEntryController *ntvc = (EditEntryController *)nv.topViewController;
-    ntvc.delegate = self;
+    EditEntryController *addEntryController = (EditEntryController *)nv.topViewController;
+    addEntryController.delegate = self;
+    addEntryController.managedObjectContext = self.managedObjectContext;
   } else if([segue.identifier isEqualToString:@"EditEntry"]){
     EditEntryController *eec = (EditEntryController *)[segue destinationViewController];
     eec.delegate = self;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     eec.entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    eec.managedObjectContext = self.managedObjectContext;
   } else if([segue.identifier isEqualToString:@"Settings"]){
     SettingsController *sc = (SettingsController *)[segue destinationViewController];
     sc.delegate = self;      
@@ -36,11 +39,6 @@
 
 -(void) editEntryController:(EditEntryController *)eec updateEntry:(Item *)entry 
 {
-  [entry setSync_status:[NSNumber numberWithInt:1]];
-  NSError *error;
-  if(![managedObjectContext save:&error]){
-    NSLog(@"ERROR updating item");
-  }
   [self.tableView reloadData];
   [[self navigationController] popViewControllerAnimated:YES];
 }
@@ -83,6 +81,8 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  self.searchResults =
+      [NSMutableArray arrayWithCapacity:[[self.fetchedResultsController fetchedObjects] count]];
   NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		// Update to handle the error appropriately.
@@ -93,7 +93,9 @@
 
 - (void)viewDidUnload
 {
+  //[self setSearchResultsController:nil];
   [super viewDidUnload];
+  self.searchResults = nil;
   self.fetchedResultsController = nil;
 }
 
@@ -116,28 +118,40 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-  id sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
-  return [sectionInfo numberOfObjects];
+  if (tableView == self.searchDisplayController.searchResultsTableView) {
+    return [self.searchResults count];
+  } else {
+    id sectionInfo = [[_fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
+  }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-
-  static NSDateFormatter *dateFormatter = nil;   
-  if (dateFormatter == nil) {  
-    dateFormatter = [[NSDateFormatter alloc] init];  
-    [dateFormatter setDateFormat:@"MM/dd h:mm a"];  
-  } 
-  
-  Item *entry = [_fetchedResultsController objectAtIndexPath:indexPath];
-  cell.textLabel.text = entry.text;
-  cell.detailTextLabel.text = [dateFormatter stringFromDate:[entry date]];
+   /// TODO!!
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   static NSString *cellIdentifier = @"EntryCell";
   UITableViewCell *cell =
-  [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-  [self configureCell:cell atIndexPath:indexPath];
+      [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  
+  static NSDateFormatter *dateFormatter = nil;   
+  if (dateFormatter == nil) {  
+    dateFormatter = [[NSDateFormatter alloc] init];  
+    [dateFormatter setDateFormat:@"MM/dd h:mm a"];  
+  } 
+  Item *item;
+
+  if (tableView == self.searchDisplayController.searchResultsTableView) {
+    item = [self.searchResults objectAtIndex:indexPath.row];
+  } else {
+    item = [_fetchedResultsController objectAtIndexPath:indexPath];
+  }
+
+  cell.textLabel.text = item.text;
+  cell.detailTextLabel.text = [dateFormatter stringFromDate:item.date];
+  
+//  [self configureCell:cell atIndexPath:indexPath];
   return cell;
 }
 
@@ -161,6 +175,7 @@
       break;
       
     case NSFetchedResultsChangeUpdate:
+      // TODO! fix configureCell
       [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
       break;
       
@@ -197,17 +212,45 @@
   return NO;
 }
 
+#pragma mark -
+#pragma mark Content Filtering
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+	[self.searchResults removeAllObjects];
+	for (Item *item in [self.fetchedResultsController fetchedObjects]) {
+		if ([scope isEqualToString:@"All"] || [item.text isEqualToString:scope]) {
+			NSComparisonResult result = [item.text compare:searchText
+                                             options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)
+                                               range:NSMakeRange(0, [searchText length])];
+      if (result == NSOrderedSame) {
+				[self.searchResults addObject:item];
+      }
+		}
+	}
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+    shouldReloadTableForSearchString:(NSString *)searchString
+{
+  [self filterContentForSearchText:searchString scope:@"All"];
+  return YES;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+    shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+  [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:@"All"];
+  return YES;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+  // Using storyboard.
 }
 
 @end

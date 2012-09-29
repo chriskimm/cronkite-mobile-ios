@@ -5,13 +5,14 @@
 @synthesize dateTimePicker;
 @synthesize dateLabel;
 @synthesize delegate;
-@synthesize entry = _entry;
+@synthesize date;
 @synthesize wheelSelector;
 
 bool dirty = FALSE;
 
 - (IBAction)done:(id)sender {
-  [self.delegate editDateTimeController:self upDate:[self.dateTimePicker date]];
+  //[self.delegate editDateTimeController:self upDate:[self.dateTimePicker date]];
+  [self.delegate editDateTimeController:self upDate:self.date];
 }
 
 - (IBAction)wheelChanged:(id)sender {
@@ -30,8 +31,8 @@ bool dirty = FALSE;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self.dateTimePicker setDate:[self.entry date]];
-  [self setDate:[self.entry date]];
+  [self setFormattedDate:self.date];
+  [self.dateTimePicker setDate:date];
 }
 
 
@@ -50,22 +51,21 @@ bool dirty = FALSE;
 }
 
 - (IBAction)dateTimeChanged:(id)sender {
-  NSDate * date = [self.dateTimePicker date];
-  [self setDate:date];
-  [self.entry setDate:date];
+  NSDate *newDate = [self.dateTimePicker date];
+  self.date = newDate;
+  [self setFormattedDate:date];
   dirty = TRUE;
 }
 
-
-
-- (void)setDate:(NSDate *)date
+- (void)setFormattedDate:(NSDate *)newDate
 {
+  NSLog(@"editDateTimeController#setDate: %@", newDate);
   static NSDateFormatter *dateFormatter = nil;
   if (dateFormatter == nil) {
     dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd h:mm a"];
   }
-  self.dateLabel.text = [dateFormatter stringFromDate:date];
+  self.dateLabel.text = [dateFormatter stringFromDate:newDate];
 }
 
 @end

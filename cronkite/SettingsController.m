@@ -1,7 +1,8 @@
 #import "SettingsController.h"
 #import "cronkiteAppDelegate.h"
-#import "CronkiteAPI.h"
 #import "AuthUtil.h"
+#import "CronkiteAPI.h"
+#import "DataManager.h"
 
 @implementation SettingsController
 
@@ -38,9 +39,9 @@
   NSString *accessToken = [AuthUtil accessTokenForCurrentAccount];
   [[CronkiteAPI instance] logout:accountKey accessToken:accessToken];
   
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"access_token"];
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"account_key"];
-
+  [AuthUtil clear];
+  [[DataManager instance] reset];
+  
   CronkiteAppDelegate *appDelegate = 
       (CronkiteAppDelegate *)[[UIApplication sharedApplication] delegate];
   [appDelegate showAuthView];

@@ -10,5 +10,6 @@
 + (DataManager *)instance;
 - (NSURL *)applicationDocumentsDirectory;
 - (void)saveContext;
+- (void)reset;
 
 @end

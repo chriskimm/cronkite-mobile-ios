@@ -8,6 +8,7 @@
 @property (strong, nonatomic) id<AuthControllerDelegate> delegate;
 
 - (IBAction)signIn:(id)sender;
+- (IBAction)setTestCreds:(id)sender;
 
 @end
 

@@ -5,5 +5,6 @@
 + (NSString *)currentAccount;
 + (NSString *)accessTokenForAccount:(NSString *)account;
 + (NSString *)accessTokenForCurrentAccount;
++ (void)clear;
 
 @end

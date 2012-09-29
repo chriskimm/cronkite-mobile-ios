@@ -9,19 +9,18 @@
                                                    UIActionSheetDelegate,
                                                    EditDateTimeDelegate,
                                                    CLLocationManagerDelegate> {
-  id<EditEntryDelegate> delegate;
-  UITextField *textField;
-  CLLocationManager *locationManager;
   NSMutableArray *locations;
 }
 
 @property (nonatomic, strong) id<EditEntryDelegate> delegate;
 @property (nonatomic, strong) IBOutlet UITextField *textField;
 @property (nonatomic, strong) IBOutlet UIButton *dateButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *addLocationButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *addPhotoButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *addLocationButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *addPhotoButton;
 @property (nonatomic, strong) Item *entry;
+@property (nonatomic, retain) NSDate *date;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction)addLocation:(id)sender;
 - (IBAction)cancel:(id)sender;

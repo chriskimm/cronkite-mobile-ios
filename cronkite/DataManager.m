@@ -1,4 +1,5 @@
 #import "DataManager.h"
+#import "AuthUtil.h"
 
 @implementation DataManager
 
@@ -32,6 +33,13 @@
        abort();
      } 
   }
+}
+
+// Forces a reload of the moc and psc. Use this when logging out
+- (void)reset
+{
+  __persistentStoreCoordinator = nil;
+  __managedObjectContext = nil;
 }
 
 #pragma mark - Core Data stack
@@ -76,8 +84,9 @@
   if (__persistentStoreCoordinator != nil) {
     return __persistentStoreCoordinator;
   }
-  
-  NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"cronkite.sqlite"];
+  NSString *userIdentifier = [AuthUtil currentAccount];
+  NSString *fileName = [NSString stringWithFormat:@"cronkite_%@.sqlite", userIdentifier];
+  NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:fileName];
   NSLog(@"storeURL %@", storeURL);
   
   NSError *error = nil;

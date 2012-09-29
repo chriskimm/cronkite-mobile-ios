@@ -28,27 +28,40 @@
   [self stopListening];
   
   void (^successBlock)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *oper, id response) {
-    NSLog(@"sync response: %@", response);
-    NSLog(@"sync response.class: %@", [response class]);
+    //NSLog(@"sync response: %@", response);
     NSArray *items = (NSArray *)[response objectForKey:@"items"];
-    NSLog(@"items.class %@", [items class]);
 
     NSManagedObjectContext *moc = [[DataManager instance] moc];
     
     for (NSDictionary *item in items) {
+
       Item *itemMO = (Item *)[Syncer managedItemForGUID:[item valueForKey:@"guid"]];
       if (!itemMO) {
-        /*
-        itemMO = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
+        itemMO = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item"
                                                               inManagedObjectContext:moc];  
-         */
+
+        itemMO.guid = [item valueForKey:@"guid"];
       }
-      NSLog(@"itemMO: %@", itemMO);
       
+      NSLog(@"incoming item: %@", item);
+      NSString *text = [item valueForKey:@"text"];
+      if (text != (id)[NSNull null]) {
+        itemMO.text = text;
+      } else {
+        itemMO.text = @"null";
+      }
+      
+      NSString *delete_status = [item valueForKey:@"delete_status"];
+      itemMO.delete_status = [NSNumber numberWithInt:[delete_status intValue]];
+      
+      NSString *date_string = [item valueForKey:@"date"];
+      NSDate *date = [FormatUtil parseISO8601:date_string];
+      itemMO.date = date;
+
       NSString *updated_at_string = [item valueForKey:@"updated_at"];
-      NSLog(@"up_at: %@", updated_at_string);
       NSDate *up_date = [FormatUtil parseISO8601:updated_at_string];
       itemMO.updated_at = up_date;
+
       [itemMO setSync_status:[NSNumber numberWithInt:0]]; // TODO: use constant
       
       NSError *error;
@@ -61,6 +74,7 @@
   
   void (^failureBlock)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *oper, NSError *error) {
     NSLog(@"sync failure: %@", [error debugDescription]);
+    [self startListening];
   };  
   
   [[CronkiteAPI instance] syncWithToken:[AuthUtil accessTokenForCurrentAccount]
@@ -79,9 +93,8 @@
   NSArray *results = 
       [[[DataManager instance] moc] executeFetchRequest:fetchRequest error:&error];
   
-//
   if ([results lastObject]) {
-      NSLog(@"last obj: %@", [results lastObject]);
+    NSLog(@"last obj: %@", [results lastObject]);
     //lastModified = [[results lastObject] valueForKey:@"updated_at"];
     return [results lastObject];
   }

@@ -1,5 +1,6 @@
 #import "SignupController.h"
 #import "AFNetworking.h"
+#import "CronkiteAPI.h"
 
 @implementation SignupController
 
@@ -18,35 +19,32 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-  // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (IBAction)signUpPressed:(id)sender {
-  // [self.delegate signupComplete];
+
+  void (^mySuccess)(AFHTTPRequestOperation *, id) = ^(AFHTTPRequestOperation *oper, id response) {
+    NSString *auth_token = [response valueForKey:@"auth_token"];
+    NSString *account_key = [response valueForKey:@"account_key"];
+    [[NSUserDefaults standardUserDefaults] setValue:account_key forKey:@"account_key"];
+    [[NSUserDefaults standardUserDefaults] setValue:auth_token forKey:@"auth_token"];
+    [self.delegate signupComplete];
+  };
+  
+  void (^myFailure)(AFHTTPRequestOperation *, NSError *) = ^(AFHTTPRequestOperation *oper, NSError *error) {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Signup Error"
+                                                    message:[error description]
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+  };
   
   
-  NSURL *baseUrl = [NSURL URLWithString:@"http://localhost:9393/"];
-  AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:baseUrl];
-  [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
-  [client setDefaultHeader:@"Accept" value:@"application/json"];
-  
-  NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                          [self.emailField text], @"email", 
-                          [self.passwordField text], @"password", nil];
-  
-  [client postPath:@"api/account" parameters:params        
-           success:^( AFHTTPRequestOperation *operation , id responseObject) {
-             NSLog(@"success 1: %@", [responseObject class]);
-             NSLog(@"success 2: %@", responseObject);
-             NSString *auth_token = [responseObject valueForKey:@"auth_token"];
-             NSLog(@"value for auth_token: %@", auth_token);
-             [[NSUserDefaults standardUserDefaults] setValue:auth_token forKey:@"auth_token"];
-             [self.delegate signupComplete];
-           } 
-           failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"failure: %@", error);
-           }];
+  [[CronkiteAPI instance] signupWithEmail:[self.emailField text]
+                                 password:[self.passwordField text]
+                                  success:mySuccess failure:myFailure];
 }
 
 @end

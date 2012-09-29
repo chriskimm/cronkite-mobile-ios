@@ -19,4 +19,10 @@
   return [self accessTokenForAccount:accountKey];
 }
 
++ (void)clear
+{
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"access_token"];
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"account_key"];
+}
+
 @end
