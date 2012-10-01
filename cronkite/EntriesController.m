@@ -9,6 +9,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+  NSLog(@"seque: %@", segue.identifier);
+  
   if([segue.identifier isEqualToString:@"AddEntry"]){
     UINavigationController *nv = (UINavigationController *)[segue destinationViewController];
     EditEntryController *addEntryController = (EditEntryController *)nv.topViewController;
@@ -45,7 +47,9 @@
 
 -(void) cancelEdit:(EditEntryController *)eec
 {
+  NSLog(@"trying to cancel edit");
   [self dismissViewControllerAnimated:YES completion:nil];
+  [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
@@ -126,16 +130,21 @@
   }
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-   /// TODO!!
+- (NSString *)formatTitle:(NSString *)text
+{
+  NSString *trimmed =
+      [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  NSArray *lines =
+      [trimmed componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+  return [lines objectAtIndex:0];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   static NSString *cellIdentifier = @"EntryCell";
   UITableViewCell *cell =
       [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-  
-  static NSDateFormatter *dateFormatter = nil;   
+
+  static NSDateFormatter *dateFormatter = nil;
   if (dateFormatter == nil) {  
     dateFormatter = [[NSDateFormatter alloc] init];  
     [dateFormatter setDateFormat:@"MM/dd h:mm a"];  
@@ -148,10 +157,9 @@
     item = [_fetchedResultsController objectAtIndexPath:indexPath];
   }
 
-  cell.textLabel.text = item.text;
+  cell.textLabel.text = [self formatTitle:item.text];
   cell.detailTextLabel.text = [dateFormatter stringFromDate:item.date];
-  
-//  [self configureCell:cell atIndexPath:indexPath];
+
   return cell;
 }
 
@@ -175,8 +183,7 @@
       break;
       
     case NSFetchedResultsChangeUpdate:
-      // TODO! fix configureCell
-      [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+      [tableView reloadData]; // ?? this seems brutish, no?
       break;
       
     case NSFetchedResultsChangeMove:

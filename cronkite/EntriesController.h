@@ -14,6 +14,5 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSMutableArray *searchResults;
-//@property (strong, nonatomic) IBOutlet UISearchDisplayController *searchResultsController;
 
 @end

@@ -23,6 +23,6 @@
               success:(void (^)(AFHTTPRequestOperation *, id))successBlock
               failure:(void (^)(AFHTTPRequestOperation *, NSError *))failureBlock;
 
-- (void)logout:(NSString *)accountKey accessToken:(NSString *)token;
+- (void)logoutWithToken:(NSString *)token accountKey:(NSString *)accountKey;
 
 @end

@@ -34,14 +34,15 @@
 
 - (void)showMainView
 {
-  UIStoryboard *storyboard = [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
+  UIStoryboard *storyboard =
+      [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
   UINavigationController *mainController = 
       (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"MainController"];
   self.window.rootViewController = mainController;
   
   EntriesController *entriesController = (EntriesController *)[mainController topViewController];
   entriesController.managedObjectContext = [[DataManager instance] moc];
-  
+  [[Syncer instance] sync];
   [[Syncer instance] startListening];
 }
 

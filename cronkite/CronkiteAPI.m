@@ -52,11 +52,6 @@ static CronkiteAPI *singleton;
   [client postPath:@"api/account" parameters:params success:successBlock failure:failureBlock];
 }
 
-- (void)signupWithEmail:(NSString *)email password:(NSString *)password
-{
-  NSLog(@"Did this signup work: %@", email);
-}
-
 - (void)syncWithToken:(NSString *)token
            accountKey:(NSString *)accountKey
               success:(void (^)(AFHTTPRequestOperation *, id))successBlock
@@ -102,13 +97,13 @@ static CronkiteAPI *singleton;
   [client postPath:@"api/sync" parameters:params success:successBlock failure:failureBlock];
 }
 
-- (void)logout:(NSString *)accountKey accessToken:(NSString *)token
+- (void)logoutWithToken:(NSString *)token accountKey:(NSString *)accountKey
 {
   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                          accountKey, @"account_key", 
-                          token, @"access_token", nil];
+                          accountKey, @"account_key", nil];
   [client setDefaultHeader:@"Authorize" value:[NSString stringWithFormat:@"OAuth %@", token]];
-  [client deletePath:@"api/auth" parameters:params success:nil failure:nil];
+  NSString *path = [NSString stringWithFormat:@"api/token/%@", token];
+  [client deletePath:path parameters:params success:nil failure:nil];
 }
 
 @end

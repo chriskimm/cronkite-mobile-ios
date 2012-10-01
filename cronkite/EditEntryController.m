@@ -5,13 +5,14 @@
 @implementation EditEntryController
 
 @synthesize delegate;
-@synthesize textField;
+@synthesize textView;
 @synthesize dateButton;
 @synthesize addLocationButton;
 @synthesize addPhotoButton;
 @synthesize entry = _entry;
 @synthesize locationManager;
 @synthesize managedObjectContext;
+@synthesize deleteButton;
 
 BOOL newEntry = TRUE;
 
@@ -30,16 +31,17 @@ BOOL newEntry = TRUE;
 
 #pragma mark - Actions
 -(IBAction)cancel:(id)sender {
+  NSLog(@"hmm getting here? %@", self.delegate);
   [self.delegate cancelEdit:self];
 }
 
 -(IBAction)done:(id)sender{
-  if([self.textField.text length] <= 0) {
-    NSLog(@"You have not entered a name for this task %@",self.textField.text);
+  if([self.textView.text length] <= 0) {
+    NSLog(@"You have not entered a name for this task %@",self.textView.text);
     return;
   }
 
-  self.entry.text = self.textField.text;
+  self.entry.text = self.textView.text;
   
   for (id obj in locations) {
     NSDictionary *d = (NSDictionary *)obj;
@@ -49,7 +51,7 @@ BOOL newEntry = TRUE;
   if (newEntry) {
     Item *newEntry = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
                                                   inManagedObjectContext:self.managedObjectContext];
-    newEntry.text = self.textField.text;
+    newEntry.text = self.textView.text;
     if (self.date != nil) {
       newEntry.date = self.date;
     } else {
@@ -164,7 +166,7 @@ BOOL newEntry = TRUE;
     self.navigationItem.leftBarButtonItem = backButton;
   } else {
     newEntry = FALSE;
-    self.textField.text = self.entry.text;
+    self.textView.text = self.entry.text;
     date = self.entry.date;
   }
 
@@ -172,6 +174,14 @@ BOOL newEntry = TRUE;
   [[self locationManager] startUpdatingLocation];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  if (!self.entry) {
+    [self.textView becomeFirstResponder];
+  }
+}
+  
 - (void)setFormattedDate:(NSDate *)date
 {
   self.date = date;
@@ -191,11 +201,12 @@ BOOL newEntry = TRUE;
 
 - (void)viewDidUnload {
   [self setDateButton:nil];
-  [self setTextField:nil];
   [self setAddLocationButton:nil];
   [self setAddPhotoButton:nil];
   [self setLocationManager:nil];
   locations = nil;
+  [self setDeleteButton:nil];
+  [self setTextView:nil];
   [super viewDidUnload];
 }
 @end

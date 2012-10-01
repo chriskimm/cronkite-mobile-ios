@@ -37,7 +37,7 @@
 {
   NSString *accountKey = [AuthUtil currentAccount];
   NSString *accessToken = [AuthUtil accessTokenForCurrentAccount];
-  [[CronkiteAPI instance] logout:accountKey accessToken:accessToken];
+  [[CronkiteAPI instance] logoutWithToken:accessToken accountKey:accountKey];
   
   [AuthUtil clear];
   [[DataManager instance] reset];

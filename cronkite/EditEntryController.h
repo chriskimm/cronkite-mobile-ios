@@ -12,15 +12,16 @@
   NSMutableArray *locations;
 }
 
-@property (nonatomic, strong) id<EditEntryDelegate> delegate;
-@property (nonatomic, strong) IBOutlet UITextField *textField;
-@property (nonatomic, strong) IBOutlet UIButton *dateButton;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *addLocationButton;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *addPhotoButton;
-@property (nonatomic, strong) Item *entry;
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) id<EditEntryDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) IBOutlet UIButton *dateButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addLocationButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addPhotoButton;
+@property (strong, nonatomic) Item *entry;
+@property (retain, nonatomic) NSDate *date;
+@property (retain, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
 
 - (IBAction)addLocation:(id)sender;
 - (IBAction)cancel:(id)sender;
