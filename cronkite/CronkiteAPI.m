@@ -1,5 +1,6 @@
 #import "CronkiteAPI.h"
 #import "DataManager.h"
+#import "Environment.h"
 #import "Item.h"
 #import "AuthUtil.h"
 #import "FormatUtil.h"
@@ -21,7 +22,8 @@ static CronkiteAPI *singleton;
 - (id)init 
 {
   if (self = [super init]) {
-    NSURL *baseUrl = [NSURL URLWithString:@"http://localhost:9393/"];
+    NSString *apiBase = [[Environment sharedInstance] apiBase];
+    NSURL *baseUrl = [NSURL URLWithString:apiBase];
     client = [[AFHTTPClient alloc] initWithBaseURL:baseUrl];
     [client setParameterEncoding:AFJSONParameterEncoding];
     [client registerHTTPOperationClass:[AFJSONRequestOperation class]];

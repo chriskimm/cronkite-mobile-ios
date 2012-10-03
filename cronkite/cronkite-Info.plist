@@ -43,6 +43,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Configuration</key>
+	<string>${CONFIGURATION}</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Cronkite</string>
 </dict>

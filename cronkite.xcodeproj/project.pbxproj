@@ -68,6 +68,10 @@
 		A5EF054E1584059F00C1D0E2 /* AuthUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF054D1584059F00C1D0E2 /* AuthUtil.m */; };
 		A5EF05511585BC6600C1D0E2 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF05501585BC6500C1D0E2 /* DataManager.m */; };
 		A5EF05521585BC6600C1D0E2 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5EF05501585BC6500C1D0E2 /* DataManager.m */; };
+		F2121215161B361B00A0F6C4 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2121214161B361B00A0F6C4 /* Environments.plist */; };
+		F2121216161B361B00A0F6C4 /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2121214161B361B00A0F6C4 /* Environments.plist */; };
+		F212121A161B460F00A0F6C4 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = F2121219161B460F00A0F6C4 /* Environment.m */; };
+		F212121B161B460F00A0F6C4 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = F2121219161B460F00A0F6C4 /* Environment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +154,9 @@
 		A5EF054D1584059F00C1D0E2 /* AuthUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthUtil.m; sourceTree = "<group>"; };
 		A5EF054F1585BC6500C1D0E2 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		A5EF05501585BC6500C1D0E2 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		F2121214161B361B00A0F6C4 /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Environments.plist; sourceTree = "<group>"; };
+		F2121218161B460F00A0F6C4 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		F2121219161B460F00A0F6C4 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +279,7 @@
 				A5C874C1155A30E60067A4FC /* InfoPlist.strings */,
 				A5C874C4155A30E60067A4FC /* main.m */,
 				A5C874C6155A30E60067A4FC /* cronkite-Prefix.pch */,
+				F2121214161B361B00A0F6C4 /* Environments.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -330,6 +338,8 @@
 				A5EF054D1584059F00C1D0E2 /* AuthUtil.m */,
 				A52836C015FC739D005128B0 /* FormatUtil.h */,
 				A52836C115FC739D005128B0 /* FormatUtil.m */,
+				F2121218161B460F00A0F6C4 /* Environment.h */,
+				F2121219161B460F00A0F6C4 /* Environment.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -406,6 +416,7 @@
 			files = (
 				A5C874C3155A30E60067A4FC /* InfoPlist.strings in Resources */,
 				A5AD55C11560527E00EAE7B4 /* Cronkite.storyboard in Resources */,
+				F2121215161B361B00A0F6C4 /* Environments.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C874DF155A30E70067A4FC /* InfoPlist.strings in Resources */,
+				F2121216161B361B00A0F6C4 /* Environments.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +479,7 @@
 				A558B8C5158E399200C63539 /* Item.m in Sources */,
 				A52836C215FC739D005128B0 /* FormatUtil.m in Sources */,
 				A52836C615FD744F005128B0 /* Syncer.m in Sources */,
+				F212121A161B460F00A0F6C4 /* Environment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +509,7 @@
 				A5EF05521585BC6600C1D0E2 /* DataManager.m in Sources */,
 				A558B8C2158E399100C63539 /* Location.m in Sources */,
 				A558B8C6158E399200C63539 /* Item.m in Sources */,
+				F212121B161B460F00A0F6C4 /* Environment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
