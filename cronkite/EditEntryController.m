@@ -135,8 +135,9 @@ BOOL newEntry = TRUE;
 }
 
 // CLLocatinManagerDelegate
-- (void)location:(CLLocationManager *)managerdidUpdateToLocation:(CLLocation *)newLocation
-  fromLocation:(CLLocation *)oldLocation {
+- (void)location:(CLLocationManager *)location
+    managerdidUpdateToLocation:(CLLocation *)newLocation
+    fromLocation:(CLLocation *)oldLocation {
   addLocationButton.enabled = YES;
 }
 

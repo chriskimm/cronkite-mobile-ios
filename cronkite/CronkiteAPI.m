@@ -95,7 +95,7 @@ static CronkiteAPI *singleton;
                             accountKey, @"account_key", 
                             [FormatUtil toISO8601:lastModified], @"last_updated_at",
                             itemsJSON, @"items", nil];
-  [client setDefaultHeader:@"Authorize" value:[NSString stringWithFormat:@"OAuth %@", token]];
+  [client setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
   [client postPath:@"api/sync" parameters:params success:successBlock failure:failureBlock];
 }
 
@@ -103,7 +103,7 @@ static CronkiteAPI *singleton;
 {
   NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                           accountKey, @"account_key", nil];
-  [client setDefaultHeader:@"Authorize" value:[NSString stringWithFormat:@"OAuth %@", token]];
+  [client setDefaultHeader:@"Authorization" value:[NSString stringWithFormat:@"Bearer %@", token]];
   NSString *path = [NSString stringWithFormat:@"api/token/%@", token];
   [client deletePath:path parameters:params success:nil failure:nil];
 }
