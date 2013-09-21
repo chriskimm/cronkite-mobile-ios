@@ -11,7 +11,6 @@
 bool dirty = FALSE;
 
 - (IBAction)done:(id)sender {
-  //[self.delegate editDateTimeController:self upDate:[self.dateTimePicker date]];
   [self.delegate editDateTimeController:self upDate:self.date];
 }
 

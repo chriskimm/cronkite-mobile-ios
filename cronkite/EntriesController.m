@@ -9,8 +9,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-  NSLog(@"seque: %@", segue.identifier);
-  
   if([segue.identifier isEqualToString:@"AddEntry"]){
     UINavigationController *nv = (UINavigationController *)[segue destinationViewController];
     EditEntryController *addEntryController = (EditEntryController *)nv.topViewController;
@@ -41,21 +39,25 @@
 
 -(void) editEntryController:(EditEntryController *)eec updateEntry:(Item *)entry 
 {
+  NSError *error;
+  if(![self.managedObjectContext save:&error]){
+    NSLog(@"Item ERROR: %@", error);
+  }
+  
   [self.tableView reloadData];
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
 -(void) cancelEdit:(EditEntryController *)eec
 {
-  NSLog(@"trying to cancel edit");
   [self dismissViewControllerAnimated:YES completion:nil];
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {
-  
   if (_fetchedResultsController == nil) {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Item" 
                                               inManagedObjectContext:managedObjectContext];
     [fetchRequest setEntity:entity];

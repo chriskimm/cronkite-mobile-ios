@@ -2,6 +2,11 @@
 #import "DataManager.h"
 #import "Location.h"
 
+@interface EditEntryController()
+// Mark the UI as having changes
+- (void)dirty;
+@end
+
 @implementation EditEntryController
 
 @synthesize delegate;
@@ -31,7 +36,6 @@ BOOL newEntry = TRUE;
 
 #pragma mark - Actions
 -(IBAction)cancel:(id)sender {
-  NSLog(@"hmm getting here? %@", self.delegate);
   [self.delegate cancelEdit:self];
 }
 
@@ -42,11 +46,6 @@ BOOL newEntry = TRUE;
   }
 
   self.entry.text = self.textView.text;
-  
-  for (id obj in locations) {
-    NSDictionary *d = (NSDictionary *)obj;
-    NSLog(@"hello: %@", d);
-  }
   
   if (newEntry) {
     Item *newEntry = (Item *)[NSEntityDescription insertNewObjectForEntityForName:@"Item" 
@@ -64,11 +63,6 @@ BOOL newEntry = TRUE;
     [self.entry setSync_status:[NSNumber numberWithInt:1]];
     [self.delegate editEntryController:self updateEntry:self.entry];
   }
-  
-  NSError *error;
-  if(![managedObjectContext save:&error]){
-    NSLog(@"Item ERROR: %@", error);
-  }
 }
 
 -(IBAction)showActionSheet:(id)sender {
@@ -84,6 +78,7 @@ BOOL newEntry = TRUE;
   switch (buttonIndex) {
     case 0: 
       self.entry.delete_status = [NSNumber numberWithInt:1];
+      [self.entry setSync_status:[NSNumber numberWithInt:1]];
       [self.delegate editEntryController:self updateEntry:self.entry];
       break;
   }
@@ -91,7 +86,10 @@ BOOL newEntry = TRUE;
   
 - (void) editDateTimeController:(EditDateTimeController *)edtc upDate:(NSDate *)date
 {
-  [self setFormattedDate:date];
+  if (date != self.date) {
+    [self setFormattedDate:date];
+    [self dirty];
+  }
   [[self navigationController] popViewControllerAnimated:YES];
 }
 
@@ -107,7 +105,7 @@ BOOL newEntry = TRUE;
 }
 
 - (IBAction)addLocation:(id)sender {
-  NSLog(@"add me some location!");
+  //NSLog(@"add me some location!");
 
   /*
   CLLocation *loc = [locationManager location];
@@ -153,10 +151,10 @@ BOOL newEntry = TRUE;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-
   locations = [[NSMutableArray alloc] init];
-  
   NSDate *date = [NSDate date];
+  self.textView.delegate = self;
+  
   if (self.entry == NULL) {
     newEntry = TRUE;
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] 
@@ -172,7 +170,10 @@ BOOL newEntry = TRUE;
   }
 
   [self setFormattedDate:date];
-  [[self locationManager] startUpdatingLocation];
+  hasChanges = FALSE;
+  self.navigationItem.rightBarButtonItem = nil;
+  
+  //[[self locationManager] startUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -194,6 +195,24 @@ BOOL newEntry = TRUE;
   [self.dateButton setTitle:[dateFormatter stringFromDate:date] forState:UIControlStateNormal];
 }
 
+# pragma mark - UITextViewDelegate
+- (void)textViewDidChange:(UITextView *)textView
+{
+  [self dirty];
+}
+
+- (void)dirty
+{
+  hasChanges = TRUE;
+  if (self.navigationItem.rightBarButtonItem == nil) {
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
+                                   initWithTitle: @"Done"
+                                   style:UIBarButtonItemStyleDone
+                                   target:self
+                                   action:@selector(done:)];
+    self.navigationItem.rightBarButtonItem = doneButton;
+  }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -208,6 +227,7 @@ BOOL newEntry = TRUE;
   locations = nil;
   [self setDeleteButton:nil];
   [self setTextView:nil];
+  [self setDoneButton:nil];
   [super viewDidUnload];
 }
 @end

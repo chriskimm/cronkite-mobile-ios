@@ -38,10 +38,11 @@
       [UIApplication sharedApplication].delegate.window.rootViewController.storyboard;
   UINavigationController *mainController = 
       (UINavigationController *)[storyboard instantiateViewControllerWithIdentifier:@"MainController"];
-  self.window.rootViewController = mainController;
   
   EntriesController *entriesController = (EntriesController *)[mainController topViewController];
   entriesController.managedObjectContext = [[DataManager instance] moc];
+  self.window.rootViewController = mainController;
+  
   [[Syncer instance] sync];
   [[Syncer instance] startListening];
 }

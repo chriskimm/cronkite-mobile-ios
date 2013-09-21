@@ -10,7 +10,7 @@
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 
 - (IBAction) showActionSheet:(id)sender;
-- (IBAction)done:(id)sender;
+- (IBAction) done:(id)sender;
 
 - (void)logout;
 

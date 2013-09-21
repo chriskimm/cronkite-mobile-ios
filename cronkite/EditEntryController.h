@@ -5,11 +5,14 @@
 
 @protocol EditEntryDelegate;
 
-@interface EditEntryController : UIViewController <UITextFieldDelegate, 
-                                                   UIActionSheetDelegate,
+@interface EditEntryController : UIViewController <UIActionSheetDelegate,
                                                    EditDateTimeDelegate,
-                                                   CLLocationManagerDelegate> {
+                                                   CLLocationManagerDelegate,
+                                                   UITextViewDelegate> {
   NSMutableArray *locations;
+  
+  @private
+  BOOL hasChanges;
 }
 
 @property (strong, nonatomic) id<EditEntryDelegate> delegate;
@@ -22,6 +25,7 @@
 @property (retain, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 - (IBAction)addLocation:(id)sender;
 - (IBAction)cancel:(id)sender;
